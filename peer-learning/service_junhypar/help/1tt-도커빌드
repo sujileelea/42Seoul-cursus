@@ -1,0 +1,5 @@
+docker build -t "이미지 이름" .
+
+docker run -d -P --name "컨테이너이름" "사용할이미지이름"
+
+docker exec -it test /bin/sh #만들어진 컨테이너에 접속 -it 명령어로 컨테이너 내부에 머물기 가능

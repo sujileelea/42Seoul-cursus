@@ -1,0 +1,12 @@
+1. -1 docker ps를 이용해서 포트번호 (ex:32770)을 알아낸다
+1. -2 kubectul get all 을통해서 nginx에 port22번에 연결된 포트번호(32770)을 알아ㄷ낸다
+
+2.-1 ssh root@localhost -p "포트번호"를적어서 포트에 접속
+2.-2 ssh junhypar@(ip(미니큐브설정했음 미니큐브아이피 아니면 localhost)) -p "포트번호"로 접속
+2.-3 ssh root@(minikube ip) -p "포트번호"로 접속 <<<<- 지금은 이것사용
+
+3. 패스워드 치라고 나오는데 dockerfile에 작성한 비밀번호(여기선 junhypar)입력하면
+4. nginx alpine 컨테이너에 접속 성공^오^
+
+
+ps -ef 에 사용자랑 ㅁ커멘드 입력로그 확인 가능

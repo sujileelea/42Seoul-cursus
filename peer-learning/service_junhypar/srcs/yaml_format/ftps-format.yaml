@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ftps # Service's name is ftps
+  labels:
+    app: ftps # Service's app label is ftps
+  annotations:
+      metallb.universe.tf/allow-shared-ip: "shared"
+spec:
+  selector: # Select POD based on the POD's LABELS
+    app: ftps # Select ftps POD
+  type: LoadBalancer
+  loadBalancerIP: MINIKUBE_IP
+  ports:
+    - port: 20
+      targetPort: 20 # link to pod's container's port
+      name: ftp-data
+      protocol: TCP
+    - port: 21
+      name: ftp
+      targetPort: 21
+      protocol: TCP
+    - port: 21100
+      name: passive0
+      targetPort: 21100
+      protocol: TCP
+    - port: 21101
+      name: passive1
+      targetPort: 21101
+      protocol: TCP
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata: # metadata describes the deployment itself.
+  name: ftps # deployment's name. Pods is named based on this.
+  labels: # Deployment's label
+    app: ftps
+spec: # Set Deployment
+  selector:
+    matchLabels: # Control pods which have this label
+      app: ftps
+  template: # POD!!!
+    metadata:
+      labels:
+        app: ftps # Pod's app label is ftps
+    spec: # CONTAINER!!!
+      containers: # container set
+      - name: ftps # container's name
+        image: ftps # Select docker image
+        imagePullPolicy: Never # Using local image.
+        ports:
+          - containerPort: 20
+            hostPort: 20
+          - containerPort: 21
+            hostPort: 21
+          - containerPort: 21100
+            hostPort: 21100
+          - containerPort: 21101
+            hostPort: 21101
+        livenessProbe:
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+          tcpSocket:
+            port: 21

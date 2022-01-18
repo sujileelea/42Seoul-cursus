@@ -1,0 +1,18 @@
+파일 전송
+
+  curl ftp://EXTERNAL-IP:21 --ssl -k --user junhypar -T filename
+  enter password : junhypar
+  // --ssl : ftps 쓰기 위함
+  // -k : 인증 문제 무시
+
+
+파일 다운로드
+
+curl -u junhypar:junhypar 'ftp://EXTERNAL-IP:21/toDOWNLOAD' --ssl -k -o ./DOWNLOADED
+
+
+파일 전송 확인
+
+  kubectl get pods // ftp 파드 이름 확인
+  kubectl exec -it [POD_NAME] -- sh // ftps 컨테이너 접속
+  cd ftps/junhypar // 전송된 파일 저장되는 곳

@@ -1,0 +1,51 @@
+#deployment part
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+  labels:
+    app: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+      - image: phpmyadmin
+        imagePullPolicy: Never
+        name: phpmyadmin
+        ports:
+          - containerPort: 5000
+        livenessProbe:
+          exec:
+              command:
+                  - php-fpm-healthcheck
+                  - --listen-queue=10 # fails if there are more than 10 processes waiting in the fpm queue
+                  - --accepted-conn=5000 # fails after fpm has served more than 5k requests, this will force the pod to reset, use with caution
+          initialDelaySeconds: 0
+          periodSeconds: 10
+---
+#Service part
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: phpmyadmin
+  name: phpmyadmin
+  annotations:
+    metallb.universe.tf/allow-shared-ip: shared
+spec:
+  ports:
+  - name: phpmyadmin
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: phpmyadmin
+  type: LoadBalancer
+  loadBalancerIP: MINIKUBE_IP
