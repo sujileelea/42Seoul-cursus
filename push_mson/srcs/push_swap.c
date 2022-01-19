@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 16:05:52 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/17 16:23:10 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/18 15:02:52 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,20 @@ void    init_carrier(t_carrier *carrier)
     carrier->pb_num = 0;
     carrier->a_remnant = 0;
     carrier->b_remnant = 0;
-    
+    int		rra_num = 0;
+    int		rrb_num = 0;
     return ;
 }
 
 //채워진 a스택을 정렬하는 로직을 담은 함수
 //void    push_swap(t_carrier *carrier, t_stack *a, t_stack *b)
 //{
-
-
 //}
 // int		main(int argc, char **argv)
 // {
 //     t_carrier carrier;
 //     t_stack *a;
 //     t_stack *b;
-
 //     a = 0;
 //     b = 0;
 //     if (argc < 2)
@@ -84,5 +82,4 @@ void    init_carrier(t_carrier *carrier)
 //     init_carrier(&carrier);
 //     fill_stack(&a, argc - 1, &argv[1], &carrier);
 //     push_swap(carrier, a, b);
-	
 // }

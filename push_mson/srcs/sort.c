@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:07:11 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/17 16:28:09 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/18 18:43:59 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,25 +123,22 @@ void	sort_five(t_carrier *carrier, t_stack **a, t_stack **b)
 
 void    sort_many(t_carrier *carrier, t_stack **a, t_stack **b)
 {
+    printf("[sort many] in\n");
     if (!carrier || !a)
         return ;
     if (is_sorted(*a))
         return ;
     if (is_descending(carrier, *a))
         sort_descending(carrier, a, b);
-    
+    printf("pss the conditions\n");
     //a 스택에 미정렬된 뭉텅이가 있을 경우 a_to_b
-    while (carrier->arem_cnt != 0)
-    {
-        if (carrier->pa_num == 0)
-            break ;
-        a_to_b(carrier, a, b);
-    }
-    //b 스택에 미정렬된 뭉텅이가 있을 경우 b_to_a
-    while (carrier->b_cnt != 0)
-    {
-        if (carrier->pb_num == 0)
-            break ;
-        b_to_a(carrier, a, b);
+    //b 스택에 미정렬된 뭉텅이가 있을 경우 b_to_a    
+    while (carrier->arem_cnt != 0 || carrier->brem_cnt != 0)
+    {  
+        printf("[sort many]'s while in\n");
+        if (carrier->arem_cnt != 0)
+            a_to_b(carrier, a, b);
+        if (carrier->brem_cnt != 0)
+            b_to_a(carrier, a, b);
     }
 }

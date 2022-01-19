@@ -18,18 +18,27 @@ int main(int argc, char **argv)
     printf("ac_cnt : %d\n", (&carrier)->ac_cnt);
     
 
-    if ((&carrier)->ac_cnt == 5)
-        sort_five(&carrier, &a, &b);
+    // if ((&carrier)->ac_cnt == 5)
+    //     sort_five(&carrier, &a, &b);
+
+    // printf("   STACK B\n");
+    // print_stack(&carrier, b);
+    // printf("\n");
+    printf("   STACK A\n");
+    print_stack(&carrier, a);
+    printf("\n");
+
+
+  
+    if ((&carrier)->ac_cnt == 3)
+         sort_three(&carrier, &a);
+    else
+        sort_many(&carrier, &a, &b);
+
 
     printf("   STACK A\n");
     print_stack(&carrier, a);
     printf("\n");
-    printf("   STACK B\n");
-    print_stack(&carrier, b);
-    printf("\n");
-
-
-
     // printf("head : %d\n", a->data);
     // printf("headNext : %d\n", a->next->data);
     // printf("tail : %d\n", a->prev->data);
@@ -37,10 +46,6 @@ int main(int argc, char **argv)
     // pb(&carrier, &a, &b);
     //print_stack(&carrier, a);
     // print_stack(&carrier, b);
-  
-    // if ((&carrier)->ac_cnt == 3)
-    //      sort_three(&carrier, &a);
-    // print_stack(&carrier, a);
 
     // if ((&carrier)->ac_cnt == 5)
     //     sort_five(&carrier, &a, &b);

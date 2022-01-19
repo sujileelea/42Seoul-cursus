@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 22:57:45 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/17 16:00:58 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/18 18:54:57 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void        init_pushed_stack(t_carrier *carrier, t_stack **stack, int data)
     // string형태로 들어올때 ac_cnt == 1 이기 때문에 ac_cnt++;
     carrier->ac_cnt++;
     carrier->a_cnt++;
+    carrier->arem_cnt++;
     //빈 스택이 들어오는 경우
-   
     if (*stack == 0)
     {
         *stack = temp;
@@ -129,43 +129,60 @@ void    push(t_stack **stack, int data)
     }
 }
 
-int    find_max(t_carrier *carrier, t_stack **stack)
+int    find_max(t_carrier *carrier, t_stack **stack, char c)
 {
     t_stack     *curr;
     int         max;
-    
-    if (!carrier || !stack)
+    int         i;
+
+    if (!stack)
         exit(1);
     curr = *stack;
+    printf("ac_cnt in find_max: %d\n", carrier->ac_cnt);
+    if (!carrier->a_remnant && !carrier->b_remnant)
+        i =  carrier->ac_cnt;
+    else
+    {
+        if (c == 'a')
+            i = carrier->a_remnant->data;
+        else
+            i = carrier->b_remnant->data;
+    }
+
     max = curr->data;
-    //이 부분!!!
-    while (curr)
+    while (i--)
     {
         if (max < curr->data)
             max = curr->data;
         curr = curr->next;
     }
-    carrier->max = max;
     return (max); 
 }
 
-int    find_min(t_carrier *carrier, t_stack **stack)
+int    find_min(t_carrier *carrier, t_stack **stack, char c)
 {
     t_stack     *curr;
     int         min;
-    
-    if (!carrier || !stack)
+    int         i;
+
+    if (!stack)
         exit(1);
     curr = *stack;
+    if (!carrier->a_remnant && !carrier->b_remnant)
+        i =  carrier->ac_cnt;
+    else 
+    {
+        if (c == 'a')
+            i = carrier->a_remnant->data;
+        else
+            i = carrier->b_remnant->data;
+    }
     min = curr->data;
-    // 이 부분!!!!!!!!!!
-    while (curr)
-    {   
-        printf("%d\n", curr->data);
+    while (i--)
+    {
         if (min > curr->data)
             min = curr->data;
         curr = curr->next;
     }
-    carrier->min = min;
     return (min); 
 }
