@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:26:21 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/18 19:15:54 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/20 13:07:35 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	a_to_b(t_carrier *carrier, t_stack **a, t_stack **b)
 	int pivot;
 	t_stack *head;
 
+    debug(carrier, a, b);
+    
 	if (carrier->arem_cnt < 3)
 	{
 		handle_one_two_a(carrier, a, b);
@@ -49,6 +51,8 @@ void	a_to_b(t_carrier *carrier, t_stack **a, t_stack **b)
     else 
         pivot = find_pivot(a, carrier->arem_cnt);
 	pivoting_a(carrier, a, b, pivot);
+    printf("debug after pivoting_a\n>>>\n");
+    debug(carrier, a, b);
     attach_unsorted(carrier, a, b, 'a');
     head = *a;
     while (carrier->rra_num > 0 &&
@@ -63,6 +67,8 @@ void	a_to_b(t_carrier *carrier, t_stack **a, t_stack **b)
 void    b_to_a(t_carrier *carrier, t_stack **a, t_stack **b)
 {
     int pivot;
+
+    debug(carrier, a, b);
 
     if (carrier->brem_cnt < 3)
     {

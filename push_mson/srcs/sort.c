@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:07:11 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/18 18:43:59 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/20 13:34:32 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,14 +130,12 @@ void    sort_many(t_carrier *carrier, t_stack **a, t_stack **b)
         return ;
     if (is_descending(carrier, *a))
         sort_descending(carrier, a, b);
-    printf("pss the conditions\n");
     //a 스택에 미정렬된 뭉텅이가 있을 경우 a_to_b
     //b 스택에 미정렬된 뭉텅이가 있을 경우 b_to_a    
     while (carrier->arem_cnt != 0 || carrier->brem_cnt != 0)
-    {  
-        printf("[sort many]'s while in\n");
+    {
         if (carrier->arem_cnt != 0)
-            a_to_b(carrier, a, b);
+            a_to_b(carrier, a, b); 
         if (carrier->brem_cnt != 0)
             b_to_a(carrier, a, b);
     }

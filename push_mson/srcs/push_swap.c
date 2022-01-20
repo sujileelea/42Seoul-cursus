@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 16:05:52 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/18 15:02:52 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/20 12:32:38 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void     fill_stack(t_carrier *carrier, t_stack **a, int size, char **argv)
 void    init_carrier(t_carrier *carrier)
 {
     carrier->ac_cnt = 0;
-    carrier->min = -2147483648;
-    carrier->max = 2147483637;
+    carrier->max = -2147483648;
+    carrier->min = 2147483647;
     carrier->pivot = 0;
     carrier->a_cnt = 0;
     carrier->b_cnt = 0;    

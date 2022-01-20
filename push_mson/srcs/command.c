@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:22:27 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/17 16:16:28 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/20 13:42:58 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,40 @@ void	pb(t_carrier *carrier, t_stack **a, t_stack **b)
 
 void	ra(t_stack **a)
 {
-	t_stack *head;
-	t_stack *headNext;
-	t_stack *tail;
-	
-	if (!a)
-		exit(1);
-	head = *a;
-	if (head->next)
+	t_stack *top;
+	t_stack *second;
+	t_stack *bottom;
+
+	top = *a;
+	if (top->next != 0)
 	{
-		headNext = head->next;
-		*a = headNext;
-		head->prev->next = head;
-		head->next = 0;
+		second = top->next;
+		bottom = top->next;
+		while (bottom->next != 0)
+			bottom = bottom->next;
+		bottom->next = top;
+		top->next = 0;
+		*a = second;
 	}
-	write(1, "ra\n", 3);
-	return ;
+	// t_stack *head;
+	// t_stack *headNext;
+	// t_stack *tail;
+	
+	// if (!a)
+	// 	exit(1);
+	// head = *a;
+	// if (head->next)
+	// {
+	// 	headNext = head->next;
+	// 	tail = head->prev;
+
+	// 	*a = headNext;
+	// 	tail->next = head;
+	// 	head->prev = tail;
+	// 	head->next = 0;
+	// }
+	// write(1, "ra\n", 3);
+	// return ;
 }
 
 void	rb(t_stack **b)  

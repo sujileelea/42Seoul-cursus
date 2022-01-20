@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:15:22 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/18 19:19:13 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/20 13:44:14 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,34 @@
 void	pivoting_a(t_carrier *carrier, t_stack **a, t_stack **b, int pivot)
 {
 	t_stack *head;
+	int		count;
+	t_stack *curr;
 
+
+	count = carrier->arem_cnt;
+	carrier->rra_num = 0;
 	printf("[pivition_a] in\n");
 
-	carrier->rra_num = 0;
 	head = *a;
+	curr = head;
 	//{ 피봇보다 작거나 같은 값을 pb & arem_cnt-- & pb_num++}
-	if (head->data <= pivot)
+	while (count--)
 	{
-		pb(carrier, a, b);
-		carrier->arem_cnt--;
-		carrier->pb_num++;
-		carrier->brem_cnt++;
-	}
-	//{ 피봇보다 크다면 ra & rra_num++ (미정렬된 숫자의 다시 rra로 올려줘야하니까)}
-	else
-	{
-		ra(a);
-		carrier->rra_num++;
+		printf("curr->data : %d <= pivot : %d\n", curr->data, pivot);
+		if (curr->data <= pivot)
+		{
+			pb(carrier, a, b);
+			carrier->brem_cnt++;
+			carrier->arem_cnt--;
+			carrier->pb_num++;
+		}
+		//{ 피봇보다 크다면 ra & rra_num++ (미정렬된 숫자의 다시 rra로 올려줘야하니까)}
+		else
+		{
+			ra(a);
+			carrier->rra_num++;
+		}
+		curr = curr->next;
 	}
 }
 
@@ -49,14 +59,13 @@ void	pivoting_b(t_carrier *carrier, t_stack **a, t_stack **b, int pivot)
 	if (head->data <= pivot)
 	{
 		pa(carrier, a, b);
-		carrier->brem_cnt--;
-		carrier->pa_num++;
+
 	}
 	//{ 피봇보다 크다면 rb & rrb_num++ (미정렬된 숫자 다시 rrb로 올려줘야하니까)}
 	else
 	{
 		rb(b);
-		carrier->rrb_num++;
+
 	}	
 }
 
@@ -87,113 +96,66 @@ void	attach_unsorted(t_carrier *carrier, t_stack **a, t_stack **b, char c)
 
 void	handle_one_two_a(t_carrier *carrier, t_stack **a, t_stack **b)
 {
+	t_stack *b_head;
 	t_stack *head;
-	int max;
-	int min;
+
+	//이제 b_remnant 연결리스트 맨 위에 있는 놈을 free해줄거임
+	//새 포인터 그릇에 기존 b_head를 담아줌
+	b_head = carrier->b_remnant;
+	if (b_head)
+	{
+		//brem_cnt에 현재 1 혹은 2의 잔류개수값 할당 
+		carrier->brem_cnt = carrier->b_remnant->data;
+		//b_remnant가 가리키는 headNode를 두번째로 바꿔주는 
+		carrier->b_remnant = carrier->b_remnant->next;
+	}
+	//쓰임을 다한 (한두개짜리)b_head는 free
+	free(b_head);
 	
 	head = *a;
-	max = find_max(carrier, a, 'a');
-	min = find_min(carrier, a, 'a');
-	//pa_num == 1 일 경우
-	if (carrier->pa_num == 1)
+	//개수 1의 경우
+	if (carrier->arem_cnt == 1)
 	{
-		//{ra}
 		ra(a);
+		carrier->arem_cnt = 0;
 		return ;
 	}
-	//pa_num == 2 일 경우
-	else if (carrier->pa_num == 2)
-	{
-		handle_two_a(carrier, a, b, min);
-		return ;
-	}
-	printf("[handle_one_two_a] in\n");
-}
-
-
-void    handle_two_a(t_carrier *carrier, t_stack **a, t_stack **b, int min)
-{
-	t_stack *head;
-
-	printf("[handle_two_a] in\n");
-
-
-	head = *a;
-	//{top == min이면 ra, ra}
-	if (head->data == min)
-	{
-		ra(a);
-		ra(a);
-	}
-//{top != min이면 sa, ra, ra}
-	else
-	{
+	//개수 2의 경우
+	if (head->data > head->next->data)
 		sa(a);
-		ra(a);
-		ra(a);
-	}
-}
-
-void    handle_one_b(t_carrier *carrier, t_stack **a, t_stack **b)
-{
-
-	printf("[handle_one_b] in\n");
-
-
-    pb(carrier, a, b);
-	carrier->pa_num--;
-	carrier->pb_num++;
-
-}
-
-void    handle_two_b(t_carrier *carrier, t_stack **a, t_stack **b, int min)
-{
-
-		printf("[handle_two_b] in\n");
-
-    //{top == min이면 pa, pa -> ra, ra}
-	if ((*a)->data == min)
-	{
-		pa(carrier, a, b);
-		pa(carrier, a, b);
-		ra(a);
-		ra(a);
-		carrier->brem_cnt -= 2;
-		carrier->pa_num += 2;
-	}
-    //{top != min이면 sb, pa, pa -> ra, ra}
-	else
-	{
-		sb(b);
-		pa(carrier, a, b);
-		pa(carrier, a, b);
-		ra(a);
-		ra(a);
-		carrier->brem_cnt -= 2;
-		carrier->pa_num += 2;
-	}
+	ra(a);
+	ra(a);
+	carrier->arem_cnt = 0;
 }
 
 void	handle_one_two_b(t_carrier *carrier, t_stack **a, t_stack **b)
 {
+	t_stack *a_head;
 	t_stack *head;
-	int max;
-	int min;
-	
-	printf("[handle_one_two_b] in\n");
 
 
-	head = *a;
-	max = find_max(carrier, b, 'b');
-	min = find_min(carrier, b, 'b');
-//pb_num == 1 일 경우
-	if (carrier->pb_num == 1)
+	carrier->pa_num -= carrier->brem_cnt;
+	carrier->arem_cnt = carrier->a_remnant->data;
+
+	a_head = carrier->a_remnant;
+	carrier->a_remnant = carrier->a_remnant->next;
+	free(a_head); 
+
+	head = *b;
+	//b의 unsorted 탑 개수가 1일때
+	if (carrier->brem_cnt == 1)
 	{
-		handle_one_b(carrier, a, b);
+		pa(carrier, a, b);
+		ra(a);
+		carrier->brem_cnt = 0;
+		return ;
 	}
-//pb_num == 2 일 경우
-	else if (carrier->pb_num == 2)
-	{
-		handle_two_b(carrier, a, b, min);
-	}
+	//b의 unsorted 탑 개수가 2일때
+	if (head->data < head->next->data)
+		sb(b);
+	pa(carrier, a, b);
+	pa(carrier, a, b);
+	ra(a);
+	ra(a);
+	carrier->brem_cnt = 0;
 }

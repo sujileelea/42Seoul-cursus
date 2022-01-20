@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 15:54:06 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/18 19:16:15 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/20 12:57:06 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,6 @@ void	pivoting_b(t_carrier *carrier, t_stack **a, t_stack **b, int pivot);
 void	attach_unsorted(t_carrier *carrier, t_stack **a, t_stack **b, char c);
 void	handle_one_two_a(t_carrier *carrier, t_stack **a, t_stack **b);
 void	handle_one_two_b(t_carrier *carrier, t_stack **a, t_stack **b);
-void    handle_one_b(t_carrier *carrier, t_stack **a, t_stack **b);
-void    handle_two_a(t_carrier *carrier, t_stack **a, t_stack **b, int min);
-void    handle_two_b(t_carrier *carrier, t_stack **a, t_stack **b, int min);
 
 
 
@@ -143,4 +140,5 @@ void		free_arr(char **arr);
 /**                     debug.c                     **/
 /*****************************************************/
 void		print_stack(t_carrier *carrier, t_stack *stack);
+void		debug(t_carrier *carrier, t_stack **a, t_stack **b);
 #endif
