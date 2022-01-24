@@ -5,33 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 15:26:21 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/20 14:08:28 by sujilee          ###   ########.fr       */
+/*   Created: 2022/01/21 22:06:13 by sujilee           #+#    #+#             */
+/*   Updated: 2022/01/22 20:48:26 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		find_pivot(t_stack **stack, int count)
-{
-	int max;
-	int min;
-	t_stack *curr;
-
-	curr = *stack;
-	max = curr->data;
-	min = curr->data;
-	while (count--)
-	{
-		if (max < curr->data)
-			max = curr->data;
-		else if (min > curr->data)
-			min = curr->data;
-		curr = curr->next;
-	}
-	return ((max + min) / 2);
-}
-
 
 void	a_to_b(t_carrier *carrier, t_stack **a, t_stack **b)
 {
@@ -57,12 +36,12 @@ void	a_to_b(t_carrier *carrier, t_stack **a, t_stack **b)
         rra(a);
         carrier->rra_num--;
     }
-    carrier->rra_num = 0;
+    carrier->rra_num = 0;	
 }
 
-void    b_to_a(t_carrier *carrier, t_stack **a, t_stack **b)
+void	b_to_a(t_carrier *carrier, t_stack **a, t_stack **b)
 {
-    int pivot;
+ 	int pivot;
 
     if (carrier->brem_cnt < 3)
     {
@@ -78,4 +57,24 @@ void    b_to_a(t_carrier *carrier, t_stack **a, t_stack **b)
         carrier->rrb_num--;
     }
     carrier->rrb_num = 0;
+}
+
+int		find_pivot(t_stack **stack, int count)
+{
+	int max;
+	int min;
+	t_stack *curr;
+
+	curr = *stack;
+	max = curr->data;
+	min = curr->data;
+	while (count--)
+	{
+		if (max < curr->data)
+			max = curr->data;
+		else if (min > curr->data)
+			min = curr->data;
+		curr = curr->next;
+	}
+	return ((max + min) / 2);
 }

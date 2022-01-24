@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 17:22:27 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/20 14:22:34 by sujilee          ###   ########.fr       */
+/*   Created: 2022/01/24 19:43:52 by sujilee           #+#    #+#             */
+/*   Updated: 2022/01/24 19:49:39 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void	pa(t_carrier *carrier, t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b)
 {
 	t_stack *b_top;
 	t_stack *a_second;
@@ -26,9 +25,10 @@ void	pa(t_carrier *carrier, t_stack **a, t_stack **b)
 		*a = b_top;
 		b_top->next = a_second;
 	}
+	write(1, "pa\n", 3);
 }
 
-void	pb(t_carrier *carrier, t_stack **a, t_stack **b)
+void	pb(t_stack **a, t_stack **b)
 {
 	t_stack *a_top;
 	t_stack *b_second;
@@ -38,9 +38,51 @@ void	pb(t_carrier *carrier, t_stack **a, t_stack **b)
 	b_second = *b;
 	*b = a_top;
 	a_top->next = b_second;
+	write(1, "pb\n", 3);
 }
 
-void	ra(t_stack **a)
+void	sa(t_stack **a, char is_ss)
+{
+	t_stack *p;
+	t_stack *top;
+	t_stack *second;
+
+	second = *a;
+	if (second->next != 0)
+	{
+		top = second->next;
+		p = top->next;
+		*a = top;
+		top->next = second;
+		second->next = p;
+	}
+	if (is_ss == 0)
+		write(1, "sa\n", 3);
+}
+
+void	sb(t_stack **b, char is_ss)
+{
+	t_stack *p;
+	t_stack *top;
+	t_stack *second;
+
+	second = *b;
+	if (second != 0 && second->next != 0)
+	{
+		top = second->next;
+		p = top->next;
+		*b = top;
+		top->next = second;
+		second->next = p;
+	}
+	if (is_ss == 0)
+		write(1, "sb\n", 3);
+	else
+		write(1, "ss\n", 3);
+}
+
+
+void	ra(t_stack **a, char is_rr)
 {
 	t_stack *top;
 	t_stack *second;
@@ -57,9 +99,11 @@ void	ra(t_stack **a)
 		top->next = 0;
 		*a = second;
 	}
+	if (is_rr == 0)
+		write(1, "ra\n", 3);
 }
 
-void	rb(t_stack **b)  
+void	rb(t_stack **b, char is_rr)
 {
 	t_stack *top;
 	t_stack *second;
@@ -76,9 +120,13 @@ void	rb(t_stack **b)
 		top->next = 0;
 		*b = second;
 	}
+	if (is_rr == 0)
+		write(1, "rb\n", 3);
+	else
+		write(1, "rr\n", 3);
 }
 
-void	rra(t_stack **a)
+void	rra(t_stack **a, char is_rrr)
 {
 	t_stack *top;
 	t_stack *pre_bottom;
@@ -96,10 +144,11 @@ void	rra(t_stack **a)
 		*a = bottom;
 		bottom->next = top;
 	}
+	if (is_rrr == 0)
+		write(1, "rra\n", 4);
 }
 
-
-void	rrb(t_stack **b)
+void	rrb(t_stack **b, char is_rrr)
 {
 	t_stack *top;
 	t_stack *pre_bottom;
@@ -117,40 +166,8 @@ void	rrb(t_stack **b)
 		*b = bottom;
 		bottom->next = top;
 	}
-}
-
-void	sa(t_stack **a)
-{
-	t_stack *p;
-	t_stack *top;
-	t_stack *second;
-
-	second = *a;
-	if (second->next != 0)
-	{
-		top = second->next;
-		p = top->next;
-		*a = top;
-		top->next = second;
-		second->next = p;
-	}
-		write(1, "sa\n", 3);
-}
-
-void	sb(t_stack **b)
-{
-	t_stack *p;
-	t_stack *top;
-	t_stack *second;
-
-	second = *b;
-	if (second != 0 && second->next != 0)
-	{
-		top = second->next;
-		p = top->next;
-		*b = top;
-		top->next = second;
-		second->next = p;
-	}
-		write(1, "sb\n", 3);
+	if (is_rrr == 0)
+		write(1, "rrb\n", 4);
+	else
+		write(1, "rrr\n", 4);
 }

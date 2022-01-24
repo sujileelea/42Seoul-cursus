@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 17:15:22 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/20 17:35:35 by sujilee          ###   ########.fr       */
+/*   Created: 2022/01/21 22:06:47 by sujilee           #+#    #+#             */
+/*   Updated: 2022/01/22 20:50:21 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	attach_unsorted(t_carrier *carrier, t_stack **a, t_stack **b, char c)
 		carrier->a_remnant = t;
 	else
 		carrier->b_remnant = t;
+
 }
 
 void	handle_one_two_a(t_carrier *carrier, t_stack **a, t_stack **b)
@@ -117,6 +118,7 @@ void	handle_one_two_a(t_carrier *carrier, t_stack **a, t_stack **b)
 	ra(a);
 	ra(a);
 	carrier->arem_cnt = 0;
+
 }
 
 void	handle_one_two_b(t_carrier *carrier, t_stack **a, t_stack **b)
