@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:28:17 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/27 13:34:58 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/27 17:14:57 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	main(int ac, char **av)
 		init_carrier(ac, &carrier);
 		fill_stack(&carrier, av, &a, 0);
 		push_swap(&carrier, &a, &b);
-		print_stack(&carrier, a);
 		free_stack(&a);
 	}
 	return (0);
