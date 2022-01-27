@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:38:27 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/25 04:52:31 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/27 14:18:28 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ void	ft_split_free(char **s)
 	free(s);
 }
 
-void	free_stack(t_stack **stack)
+void	free_stack(t_stack **a_or_b)
 {
-	t_stack	*prev;
-	t_stack	*next;
+	t_stack	*p;
+	t_stack	*t;
 
-	if (*stack == 0)
+	if (*a_or_b == 0)
 		return ;
-	prev = *stack;
-	while (prev != 0)
+	p = *a_or_b;
+	while (p != 0)
 	{
-		next = prev->next;
-		free(prev);
-		prev = next;
+		t = p->next;
+		free(p);
+		p = t;
 	}
 }

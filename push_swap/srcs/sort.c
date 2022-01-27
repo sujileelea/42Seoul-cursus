@@ -6,11 +6,12 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:49:53 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/25 16:48:42 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/27 15:52:18 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	is_descending(t_carrier *carrier, t_stack **a)
 {

@@ -6,37 +6,37 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:37:19 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/25 16:51:35 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/27 15:15:52 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	get_integer(char *argv, t_stack **a, char **s)
+long	get_integer(char *av, t_stack **a, char **s)
 {
+	int		minus;
 	long	num;
-	int		sign;
 
 	num = 0;
-	sign = 1;
-	if (*argv == '+' || *argv == '-')
+	minus = 1;
+	if (*av == '+' || *av == '-')
 	{
-		if (*argv++ == '+')
-			sign = 1;
+		if (*av++ == '+')
+			minus = 1;
 		else
-			sign = -1;
+			minus = -1;
 	}
-	if (*argv < '0' || *argv > '9')
+	if (*av < '0' || *av > '9')
 		print_error(a, 0, s);
-	while (*argv >= '0' && *argv <= '9')
+	while (*av >= '0' && *av <= '9')
 	{
-		num = num * 10 + (*argv++ - '0');
+		num = num * 10 + (*av++ - '0');
 		if (num < 0 || num > 2147483648)
 			print_error(a, 0, s);
 	}
-	if (*argv != 0 || (sign == 1 && num > 2147483647))
+	if (*av != 0 || (minus == 1 && num > 2147483647))
 		print_error(a, 0, s);
-	return (sign * num);
+	return (num * minus);
 }
 
 int	is_overlapped(t_stack **a, t_stack *p, int num)
@@ -61,8 +61,10 @@ void	link_stack(t_carrier *carrier, t_stack **a, t_stack **p, char **arr)
 	if (t == 0)
 		print_error(a, 0, arr);
 	t->data = carrier->b_cnt;
-	carrier->min = find_min(carrier->min, b_cnt);
-	carrier->max = find_min(carrier->max, b_cnt);
+	if (carrier->min > carrier->b_cnt)
+		carrier->min = carrier->b_cnt;
+	if (carrier->max < carrier->b_cnt)
+		carrier->max = carrier->b_cnt;
 	t->next = 0;
 	if (*a == 0)
 	{
@@ -74,7 +76,7 @@ void	link_stack(t_carrier *carrier, t_stack **a, t_stack **p, char **arr)
 	*p = t;
 }
 
-void	fill_stack(t_carrier *carrier, char **argv, t_stack **a, int size)
+void	fill_stack(t_carrier *carrier, char **av, t_stack **a, int num)
 {
 	int		i;
 	int		j;
@@ -85,7 +87,7 @@ void	fill_stack(t_carrier *carrier, char **argv, t_stack **a, int size)
 	p = 0;
 	while (++i < carrier->argc)
 	{
-		arr = ft_split(argv[i], ' ');
+		arr = ft_split(av[i], ' ');
 		if (arr == 0)
 			print_error(a, 0, 0);
 		j = -1;
@@ -95,10 +97,26 @@ void	fill_stack(t_carrier *carrier, char **argv, t_stack **a, int size)
 			link_stack(carrier, a, &p, arr);
 			if ((is_overlapped(a, p, carrier->b_cnt)) == 1)
 				print_error(a, 0, arr);
-			size++;
+			num++;
 		}
 		ft_split_free(arr);
 	}
 	carrier->b_cnt = 0;
-	carrier->argc = size;
+	carrier->argc = num;
+}
+
+void	check_ab(t_carrier *carrier, t_stack *t, char c)
+{
+	if (c == 'a')
+		t->data = carrier->rra_cnt;
+	else
+		t->data = carrier->rrb_cnt;
+	if (c == 'a')
+		t->next = carrier->a_remnant;
+	else
+		t->next = carrier->b_remnant;
+	if (c == 'a')
+		carrier->a_remnant = t;
+	else
+		carrier->b_remnant = t;
 }

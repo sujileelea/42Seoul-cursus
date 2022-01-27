@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 20:07:19 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/24 20:08:14 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/27 13:32:27 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	do_split(char **arr, char const *s, char c, size_t i)
 			p = (char *)s;
 			while (*s != c && *s != 0)
 				s++;
-			arr[i] = (char *)malloc(sizeof(char) * (s - p + 1));
+			arr[i] = (char *)malloc(sizeof(char *) * (s - p + 1));
 			if (!arr[i])
 			{
 				free_arr(arr, i);
