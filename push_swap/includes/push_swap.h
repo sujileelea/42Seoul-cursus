@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:28:34 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/27 14:11:38 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/28 11:46:04 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ void		init_carrier(int ac, t_carrier *r);
 /*****************************************************/
 
 long		get_integer(char *av, t_stack **a, char **s);
-int			is_overlapped(t_stack **a, t_stack *p, int num);
+int			is_overlapped(t_stack **a, t_stack *new_node, int num);
 void		link_stack(t_carrier *carrier, t_stack **a,
-				t_stack **p, char **arr);
+				t_stack **new_node, char **arr);
 void		fill_stack(t_carrier *carrier, char **av,
 				t_stack **a, int num);
-void		check_ab(t_carrier *carrier, t_stack *t, char c);
+void		check_ab(t_carrier *carrier, t_stack *curr, char c);
 
 /*****************************************************/
 /**                    command.c                    **/
@@ -102,9 +102,9 @@ int			get_pivot(t_stack **p, int num);
 void		attach_unsorted(t_carrier *carrier, t_stack **a,
 				t_stack **b, char c);
 void		pivoting_a(t_carrier *carrier, t_stack **a,
-				t_stack **b, int mid);
+				t_stack **b, int pivot);
 void		pivoting_b(t_carrier *carrier, t_stack **a,
-				t_stack **b, int mid);
+				t_stack **b, int pivot);
 
 /*****************************************************/
 /**                      find.c                     **/
@@ -119,7 +119,7 @@ void		find_three(t_carrier *carrier, t_stack **a);
 /*****************************************************/
 
 void		ft_split_free(char **s);
-void		free_stack(t_stack **a_or_b);
+void		free_stack(t_stack **stack);
 
 /*****************************************************/
 /**                      error.c                    **/

@@ -6,7 +6,7 @@
 #    By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 22:30:00 by mki               #+#    #+#              #
-#    Updated: 2022/01/27 15:51:48 by sujilee          ###   ########.fr        #
+#    Updated: 2022/01/27 18:20:51 by sujilee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ RM = rm -rf
 
 FILE = command1\
 		command2\
-		debug\
 		error\
 		find\
 		free\

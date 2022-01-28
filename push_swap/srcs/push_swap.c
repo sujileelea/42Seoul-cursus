@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:28:17 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/27 17:14:57 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/28 11:39:55 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,31 +49,31 @@ void	push_swap(t_carrier *carrier, t_stack **a, t_stack **b)
 		sort_many(carrier, a, b);
 }
 
-void	init_carrier(int ac, t_carrier *r)
+void	init_carrier(int argc, t_carrier *carrier)
 {
-	r->argc = ac;
-	r->max = -2147483648;
-	r->min = 2147483647;
-	r->pb_cnt = 0;
-	r->rra_cnt = 0;
-	r->rrb_cnt = 0;
-	r->b_cnt = 0;
-	r->a_remnant = 0;
-	r->b_remnant = 0;
+	carrier->argc = argc;
+	carrier->max = -2147483648;
+	carrier->min = 2147483647;
+	carrier->pb_cnt = 0;
+	carrier->rra_cnt = 0;
+	carrier->rrb_cnt = 0;
+	carrier->b_cnt = 0;
+	carrier->a_remnant = 0;
+	carrier->b_remnant = 0;
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	t_stack		*a;
 	t_stack		*b;
 	t_carrier	carrier;
 
-	if (ac >= 2)
+	if (argc >= 2)
 	{
 		a = 0;
 		b = 0;
-		init_carrier(ac, &carrier);
-		fill_stack(&carrier, av, &a, 0);
+		init_carrier(argc, &carrier);
+		fill_stack(&carrier, argv, &a, 0);
 		push_swap(&carrier, &a, &b);
 		free_stack(&a);
 	}

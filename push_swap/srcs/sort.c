@@ -6,29 +6,28 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:49:53 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/27 15:52:18 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/28 11:28:43 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	is_descending(t_carrier *carrier, t_stack **a)
 {
 	int		before;
-	t_stack	*p;
+	t_stack	*curr;
 
-	p = *a;
-	if (p->data != carrier->max)
+	curr = *a;
+	if (curr->data != carrier->max)
 		return (0);
-	before = p->data;
-	p = p->next;
-	while (p != 0)
+	before = curr->data;
+	curr = curr->next;
+	while (curr != 0)
 	{
-		if (before < p->data)
+		if (before < curr->data)
 			return (0);
-		before = p->data;
-		p = p->next;
+		before = curr->data;
+		curr = curr->next;
 	}
 	return (1);
 }
@@ -53,22 +52,22 @@ int	sort_descending(t_carrier *carrier, t_stack **a, t_stack **b)
 void	sort_three(t_carrier *carrier, t_stack **a)
 {
 	int		before;
-	t_stack	*p;
+	t_stack	*curr;
 
 	find_three(carrier, a);
-	p = *a;
-	before = p->data;
-	p = p->next;
-	if ((before == carrier->min && p->data == carrier->max)
-		|| (before == carrier->max && p->data != carrier->min)
-		|| (before != carrier->max && p->data == carrier->min))
+	curr = *a;
+	before = curr->data;
+	curr = curr->next;
+	if ((before == carrier->min && curr->data == carrier->max)
+		|| (before == carrier->max && curr->data != carrier->min)
+		|| (before != carrier->max && curr->data == carrier->min))
 		sa(a, 0);
-	p = *a;
-	before = p->data;
-	p = p->next;
-	if (before == carrier->max && p->data == carrier->min)
+	curr = *a;
+	before = curr->data;
+	curr = curr->next;
+	if (before == carrier->max && curr->data == carrier->min)
 		ra(a, 0);
-	else if (before != carrier->min && p->data == carrier->max)
+	else if (before != carrier->min && curr->data == carrier->max)
 		rra(a, 0);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:43:51 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/27 13:57:05 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/28 13:31:58 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	ra(t_stack **a, char is_rr)
 {
-	t_stack	*top;
-	t_stack	*second;
-	t_stack	*bottom;
+	t_stack	*head;
+	t_stack	*headNext;
+	t_stack	*tail;
 
-	top = *a;
-	if (top->next != 0)
+	head = *a;
+	if (head->next != 0)
 	{
-		second = top->next;
-		bottom = top->next;
-		while (bottom->next != 0)
-			bottom = bottom->next;
-		bottom->next = top;
-		top->next = 0;
-		*a = second;
+		headNext = head->next;
+		tail = head->next;
+		while (tail->next != 0)
+			tail = tail->next;
+		tail->next = head;
+		head->next = 0;
+		*a = headNext;
 	}
 	if (is_rr == 0)
 		write(1, "ra\n", 3);
@@ -35,19 +35,19 @@ void	ra(t_stack **a, char is_rr)
 
 void	rb(t_stack **b, char is_rr)
 {
-	t_stack	*top;
+	t_stack	*head;
 	t_stack	*second;
 	t_stack	*bottom;
 
-	top = *b;
-	if (top != 0 && top->next != 0)
+	head = *b;
+	if (head != 0 && head->next != 0)
 	{
-		second = top->next;
-		bottom = top->next;
+		second = head->next;
+		bottom = head->next;
 		while (bottom->next != 0)
 			bottom = bottom->next;
-		bottom->next = top;
-		top->next = 0;
+		bottom->next = head;
+		head->next = 0;
 		*b = second;
 	}
 	if (is_rr == 0)
@@ -58,21 +58,21 @@ void	rb(t_stack **b, char is_rr)
 
 void	rra(t_stack **a, char is_rrr)
 {
-	t_stack	*top;
-	t_stack	*pre_bottom;
-	t_stack	*bottom;
+	t_stack	*head;
+	t_stack	*prevTail;
+	t_stack	*tail;
 
-	top = *a;
-	if (top->next != 0)
+	head = *a;
+	if (head->next != 0)
 	{
-		bottom = top;
-		while ((bottom->next)->next != 0)
-			bottom = bottom->next;
-		pre_bottom = bottom;
-		bottom = bottom->next;
-		pre_bottom->next = 0;
-		*a = bottom;
-		bottom->next = top;
+		tail = head;
+		while ((tail->next)->next != 0)
+			tail = tail->next;
+		prevTail = tail;
+		tail = tail->next;
+		prevTail->next = 0;
+		*a = tail;
+		tail->next = head;
 	}
 	if (is_rrr == 0)
 		write(1, "rra\n", 4);
@@ -80,21 +80,21 @@ void	rra(t_stack **a, char is_rrr)
 
 void	rrb(t_stack **b, char is_rrr)
 {
-	t_stack	*top;
-	t_stack	*pre_bottom;
-	t_stack	*bottom;
+	t_stack	*head;
+	t_stack	*prevTail;
+	t_stack	*tail;
 
-	top = *b;
-	if (top != 0 && top->next != 0)
+	head = *b;
+	if (head != 0 && head->next != 0)
 	{
-		bottom = top;
-		while ((bottom->next)->next != 0)
-			bottom = bottom->next;
-		pre_bottom = bottom;
-		bottom = bottom->next;
-		pre_bottom->next = 0;
-		*b = bottom;
-		bottom->next = top;
+		tail = head;
+		while ((tail->next)->next != 0)
+			tail = tail->next;
+		prevTail = tail;
+		tail = tail->next;
+		prevTail->next = 0;
+		*b = tail;
+		tail->next = head;
 	}
 	if (is_rrr == 0)
 		write(1, "rrb\n", 4);

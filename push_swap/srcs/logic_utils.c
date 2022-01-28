@@ -6,64 +6,64 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:56:11 by sujilee           #+#    #+#             */
-/*   Updated: 2022/01/27 14:08:21 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/01/28 11:45:29 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_pivot(t_stack **p, int num)
+int	get_pivot(t_stack **stack, int num)
 {
 	int		max;
 	int		min;
-	t_stack	*t;
+	t_stack	*curr;
 
-	t = *p;
-	max = t->data;
-	min = t->data;
+	curr = *stack;
+	max = curr->data;
+	min = curr->data;
 	while (num-- > 0)
 	{
-		if (max < t->data)
-			max = t->data;
-		else if (min > t->data)
-			min = t->data;
-		t = t->next;
+		if (max < curr->data)
+			max = curr->data;
+		else if (min > curr->data)
+			min = curr->data;
+		curr = curr->next;
 	}
 	return ((max + min) / 2);
 }
 
 void	attach_unsorted(t_carrier *carrier, t_stack **a, t_stack **b, char c)
 {
-	t_stack	*t;
+	t_stack	*curr;
 
-	t = (t_stack *)malloc(sizeof(t_stack) * 1);
-	if (t == 0)
+	curr = (t_stack *)malloc(sizeof(t_stack) * 1);
+	if (curr == 0)
 	{
 		while (carrier->a_remnant != 0)
 		{
-			t = carrier->a_remnant;
+			curr = carrier->a_remnant;
 			carrier->a_remnant = carrier->a_remnant->next;
-			free(t);
+			free(curr);
 		}
 		while (carrier->b_remnant != 0)
 		{
-			t = carrier->b_remnant;
+			curr = carrier->b_remnant;
 			carrier->b_remnant = carrier->b_remnant->next;
-			free(t);
+			free(curr);
 		}
 		print_error(a, b, 0);
 	}
-	check_ab(carrier, t, c);
+	check_ab(carrier, curr, c);
 }
 
-void	pivoting_a(t_carrier *carrier, t_stack **a, t_stack **b, int mid)
+void	pivoting_a(t_carrier *carrier, t_stack **a, t_stack **b, int pivot)
 {
-	t_stack	*p;
+	t_stack	*curr;
 
 	while (carrier->a_cnt > 0)
 	{
-		p = *a;
-		if (p->data <= mid)
+		curr = *a;
+		if (curr->data <= pivot)
 		{
 			pb(a, b);
 			carrier->pb_cnt++;
@@ -78,14 +78,14 @@ void	pivoting_a(t_carrier *carrier, t_stack **a, t_stack **b, int mid)
 	}
 }
 
-void	pivoting_b(t_carrier *carrier, t_stack **a, t_stack **b, int mid)
+void	pivoting_b(t_carrier *carrier, t_stack **a, t_stack **b, int pivot)
 {
-	t_stack	*p;
+	t_stack	*curr;
 
 	while (carrier->b_cnt > 0)
 	{
-		p = *b;
-		if (p->data <= mid)
+		curr = *b;
+		if (curr->data <= pivot)
 		{
 			pa(a, b);
 			carrier->pb_cnt--;
