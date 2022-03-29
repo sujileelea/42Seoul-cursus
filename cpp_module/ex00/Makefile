@@ -1,0 +1,34 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/28 13:05:13 by sujilee           #+#    #+#              #
+#    Updated: 2022/03/28 14:31:12 by sujilee          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME := megaphone
+CFLAGS := -Wall -Wextra -Werror -std=c++98
+CC := c++
+RM := rm -rf
+
+SRC := megaphone.cpp
+OBJ := $(SRC:.cpp=.o)
+
+all : $(NAME)
+
+$(NAME) : $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
+
+clean :
+	$(RM) $(OBJ)
+
+fclean : clean
+	$(RM) $(NAME)
+
+re : fclean all
+
+.PHONY : all clean fclean re
