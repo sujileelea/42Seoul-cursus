@@ -6,27 +6,30 @@
 #    By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 16:23:20 by sujilee           #+#    #+#              #
-#    Updated: 2022/03/28 16:24:23 by sujilee          ###   ########.fr        #
+#    Updated: 2022/03/30 13:29:38 by sujilee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-
-SRCS := Contact.cpp PhoneBook.cpp main.cpp
-
-CPP := c++
-CFLAGS := -Wall -Wextra -Werror -std=c++98
-
 NAME := PhoneBook
+CFLAGS := -Wall -Wextra -Werror -std=c++98
+CC := c++
+RM := rm -rf
 
-$(NAME): $(SRCS)
-	$(CPP) $(FLAG) -o $(NAME) $(SRCS)
+SRC := Contact.cpp PhoneBook.cpp main.cpp
+OBJ := $(SRC:.cpp=.o)
 
-all: $(NAME)
+all : $(NAME)
 
-clean:
-	rm -f $(NAME)
+$(NAME) : $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
-re: clean all
+clean :
+	$(RM) $(OBJ)
 
-.PHONY: all clean re
+fclean : clean
+	$(RM) $(NAME)
+
+re : fclean all
+
+.PHONY : all clean fclean re

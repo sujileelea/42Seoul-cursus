@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:16:49 by sujilee           #+#    #+#             */
-/*   Updated: 2022/03/29 14:50:01 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/03/30 13:28:15 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	PhoneBook::SearchIndex() {
 			std::cin.clear();
 			std::cin.ignore(100, '\n');
 		}
-		std::cout << "index should be between 1 ~ " << std::min(currIdx, 8) << std::endl;
+		std::cout << "index should be  1 ~ " << std::min(currIdx, 8) << std::endl;
 	}
 	std::cout << std::endl;
 	contact[idx - 1].ShowInfo();

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 15:28:51 by sujilee           #+#    #+#             */
-/*   Updated: 2022/03/30 09:28:05 by sujilee          ###   ########.fr       */
+/*   Created: 2022/03/29 17:08:54 by sujilee           #+#    #+#             */
+/*   Updated: 2022/03/30 09:06:04 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
+#include <iostream>
+#include <cstring>
 
-#include "Contact.hpp"
+int		main(int argc, char **argv)
+{
+	if (argc == 1)
+	{	std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		return (0);
+	}
 
-class PhoneBook {
-	private: 
-			Contact contact[8];
-			int		currIdx;
-	public:
-			//특별한 메소드. 생성자
-			PhoneBook();
-			void		ShowPhoneBook();
-			void		AddContact();
-			void		SearchIndex();
-			std::string ShortenString(std::string str);
-			//특별한 메소드. 소멸자
-			~PhoneBook();
-};
+	std::string speech;
 
-#endif
+	for (int i = 1; i < argc; i++)
+		speech = speech + argv[i];
+	
+	for (int i = 0; i < speech.length(); i++)
+		speech[i] = toupper(speech[i]);
+	
+	std::cout << speech << std::endl;
+}
