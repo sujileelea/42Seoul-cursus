@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:16:49 by sujilee           #+#    #+#             */
-/*   Updated: 2022/03/30 13:28:15 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/04/01 10:52:37 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ PhoneBook::PhoneBook() {
 }
 
 void	PhoneBook::ShowPhoneBook() {	
-	//setfill("지정자") : 출력되는 모든 공백을 앞으로 지정자로 대체한다
 	std::cout << std::setw(43) << std::setfill('=') << "=" << std::endl;
-	//다시 공백으로 초기화
 	std::cout << std::setfill(' ');
 
 	std::cout << std::setw(10) << "INDEX" << "|";
@@ -81,12 +79,10 @@ void	PhoneBook::SearchIndex() {
 		std::cout << "Input index of Contact you wanna search :";
 		std::cin >> idx;
 		
-		//사용자가 올바르게 입력했을 경우
 		if (std::cin.fail() == false) {
 			if (idx >= 1 && idx <=std::min(currIdx, 8))
 				break ;
 		}
-		//그게 아니라면 clear하고 ignore해서 후에 cin기능이 정상작동하게 해준다.
 		else {
 			std::cin.clear();
 			std::cin.ignore(100, '\n');
@@ -105,5 +101,4 @@ std::string PhoneBook::ShortenString(std::string str) {
 		return str;
 }
 
-//소멸자 : 
 PhoneBook::~PhoneBook() {}

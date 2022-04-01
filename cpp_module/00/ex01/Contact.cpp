@@ -6,16 +6,14 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:52:16 by sujilee           #+#    #+#             */
-/*   Updated: 2022/03/29 14:48:30 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/04/01 10:52:52 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-//생성함과 동시에 기본값들을 넣어주고 싶을 때 사용한다.
 Contact::Contact() {}
 
-//const 키워드르 get 함수 뒤에 붙임으로써 가져오는 클래스의 모든 변수들을 변경시키지 않겠다라는 뜻
 std::string Contact::GetFirstName() const {
 	return firstName;
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 15:28:51 by sujilee           #+#    #+#             */
-/*   Updated: 2022/03/30 09:28:05 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/04/01 10:52:23 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,11 @@ class PhoneBook {
 			Contact contact[8];
 			int		currIdx;
 	public:
-			//특별한 메소드. 생성자
 			PhoneBook();
 			void		ShowPhoneBook();
 			void		AddContact();
 			void		SearchIndex();
 			std::string ShortenString(std::string str);
-			//특별한 메소드. 소멸자
 			~PhoneBook();
 };
 
