@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 09:51:45 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/03 09:51:55 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/03 16:06:19 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int main() {
 	Fixed b(a);
 	Fixed c;
 
+	//이게 대입연산자가 쓰인 부분인가?
+	
 	c = b;
 
 	std::cout << "a.getRawBits: " << a.getRawBits() << std::endl;

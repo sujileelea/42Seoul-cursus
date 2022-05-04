@@ -6,11 +6,11 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:16:49 by sujilee           #+#    #+#             */
-/*   Updated: 2022/04/01 10:52:37 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:56:46 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook() {
 	currIdx = 0;
