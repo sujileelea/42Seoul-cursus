@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:16:49 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/04 11:56:46 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/04 21:09:47 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	PhoneBook::AddContact() {
 
 void	PhoneBook::SearchIndex() {
 	int idx;
+	std::string idxString;
 
 	ShowPhoneBook();
 	if (currIdx == 0) {
@@ -78,7 +79,7 @@ void	PhoneBook::SearchIndex() {
 	while (1) {
 		std::cout << "Input index of Contact you wanna search :";
 		std::cin >> idx;
-		
+				
 		if (std::cin.fail() == false) {
 			if (idx >= 1 && idx <=std::min(currIdx, 8))
 				break ;
