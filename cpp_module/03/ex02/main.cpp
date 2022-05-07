@@ -1,10 +1,8 @@
-#include "ClapTrap.hpp"
-
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 
 int main() {
-	ClapTrap	sujilee("sujilee");
-	ClapTrap	kchoi("kchoi");
+	FragTrap	sujilee("sujilee");
+	FragTrap	kchoi("kchoi");
 
 	std::cout << std::endl;
 	sujilee.printStatus();
@@ -22,6 +20,9 @@ int main() {
 	kchoi.beRepaired(10);
 	std::cout << std::endl;
 	kchoi.printStatus();
+
+	sujilee.highFivesGuys();
+	kchoi.highFivesGuys();
 
 	return 0;
 }

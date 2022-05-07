@@ -1,10 +1,8 @@
-#include "ClapTrap.hpp"
-
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main() {
-	ClapTrap	sujilee("sujilee");
-	ClapTrap	kchoi("kchoi");
+	ScavTrap	sujilee("sujilee");
+	ScavTrap	kchoi("kchoi");
 
 	std::cout << std::endl;
 	sujilee.printStatus();
@@ -22,6 +20,9 @@ int main() {
 	kchoi.beRepaired(10);
 	std::cout << std::endl;
 	kchoi.printStatus();
+
+	sujilee.guardGate();
+	kchoi.guardGate();
 
 	return 0;
 }

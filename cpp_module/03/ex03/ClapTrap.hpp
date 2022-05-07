@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:32:03 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/06 17:21:30 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/07 13:36:39 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class ClapTrap {
 			ClapTrap(std::string name); //기본 생성자?
 			ClapTrap(const ClapTrap& ref);  //복사 생성자
 			ClapTrap&	operator=(const ClapTrap& ref); //대입 연산자
-			~ClapTrap(); //소멸자
+			virtual ~ClapTrap(); //소멸자
 
 
 			void	setName(std::string name);
@@ -43,8 +43,7 @@ class ClapTrap {
 			void	takeDamage(unsigned int amount);
 			void	beRepaired(unsigned int amount);
 			void	printStatus() const;
-			
-
+		
 };
 
 
