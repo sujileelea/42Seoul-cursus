@@ -7,7 +7,7 @@ class Brain
 {
 	private:
 		std::string	_ideas[100];
-		int			_num;
+		int			_ideaIdx;
 	public:
 		Brain(void);
 		Brain(const Brain& ref);

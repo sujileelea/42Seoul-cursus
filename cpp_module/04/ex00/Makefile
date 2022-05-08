@@ -1,31 +1,35 @@
-NAME			= Polymorphism
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/28 16:23:20 by sujilee           #+#    #+#              #
+#    Updated: 2022/05/08 13:54:05 by sujilee          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC				= c++
-CFLAGS			= -Wall -Werror -Wextra -std=c++98
 
-SRCS			= main.cpp \
-					Animal.cpp \
-					Dog.cpp \
-					Cat.cpp \
-					WrongAnimal.cpp \
-					WrongCat.cpp
+NAME := Animal
+CFLAGS := -Wall -Wextra -Werror -std=c++98
+CC := c++
+RM := rm -rf
 
-OBJS			= $(SRCS:.cpp=.o)
+SRC := main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+OBJ := $(SRC:.cpp=.o)
 
-$(NAME)			: $(OBJS)
-					$(CC) $(CFLAGS) $(OBJS) -o $@
+all : $(NAME)
 
-%.o				: %.cpp
-					$(CC) $(CFLAGS) -c $< -o $@
+$(NAME) : $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
-all				: $(NAME)
+clean :
+	$(RM) $(OBJ)
 
-clean			:
-					rm -rf $(OBJS)
+fclean : clean
+	$(RM) $(NAME)
 
-fclean			:
-					rm -rf $(NAME) $(OBJS)
+re : fclean all
 
-re				: fclean all
-
-.PHONY			: all clean fclean re bonus
+.PHONY : all clean fclean re

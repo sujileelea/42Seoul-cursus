@@ -6,12 +6,12 @@
 class Cat : public Animal
 {
 	public:
-		Cat(void);
-		Cat(const Cat& ref);
-		~Cat(void);
+		Cat();
+		Cat(const Cat& original);
+		~Cat();
 
-		Cat&	operator=(const Cat& ref);
-		void	makeSound(void) const;
+		Cat&	operator=(const Cat& original);
+		void	makeSound() const;
 };
 
 

@@ -1,36 +1,36 @@
 #include "Brain.hpp"
 
-Brain::Brain(void) : _num(0)
+Brain::Brain() : _ideaIdx(0)
 {
 	std::cout << "Brain default constructor called" << std::endl;
 }
 
-Brain::Brain(const Brain& ref)
+Brain::Brain(const Brain& original)
 {
-	for (int i = 0; i < ref._num; i++)
-		_ideas[i] = ref._ideas[i];
-	_num = ref._num;
+	for (int i = 0; i < original._ideaIdx; i++)
+		_ideas[i] = original._ideas[i];
+	_ideaIdx = original._ideaIdx;
 }
 
-Brain::~Brain(void)
+Brain::~Brain()
 {
 	std::cout << "Brain destructor called" << std::endl;
 }
 
-Brain& Brain::operator=(const Brain& ref)
+Brain& Brain::operator=(const Brain& original)
 {
-	for (int i = 0; i < ref._num; i++)
-		_ideas[i] = ref._ideas[i];
-	_num = ref._num;
+	for (int i = 0; i < original._ideaIdx; i++)
+		_ideas[i] = original._ideas[i];
+	_ideaIdx = original._ideaIdx;
 	return *this;
 }
 
 void	Brain::addIdea(std::string idea)
 {
-	if (_num == 99)
-		_num = 0;
-	_ideas[_num] = idea;
-	_num++;
+	if (_ideaIdx == 99)
+		_ideaIdx = 0;
+	_ideas[_ideaIdx] = idea;
+	_ideaIdx++;
 }
 
 const std::string&	Brain::getIdea(unsigned int idx) const

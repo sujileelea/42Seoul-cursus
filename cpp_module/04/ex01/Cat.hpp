@@ -9,12 +9,12 @@ class Cat : public Animal
 	private:
 		Brain*	_brain;
 	public:
-		Cat(void);
-		Cat(const Cat& ref);
-		~Cat(void);
+		Cat();
+		Cat(const Cat& original);
+		~Cat();
 
-		Cat&				operator=(const Cat& ref);
-		void				makeSound(void) const;
+		Cat&				operator=(const Cat& original);
+		void				makeSound() const;
 		void				addIdea(std::string idea);
 		const std::string&	getIdea(unsigned int idx) const;
 };

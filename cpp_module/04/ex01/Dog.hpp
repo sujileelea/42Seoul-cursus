@@ -9,12 +9,12 @@ class Dog : public Animal
 	private:
 		Brain*	_brain;
 	public:
-		Dog(void);
-		Dog(const Dog& ref);
-		~Dog(void);
+		Dog();
+		Dog(const Dog& original);
+		~Dog();
 
-		Dog&				operator=(const Dog& ref);
-		void				makeSound(void) const;
+		Dog&				operator=(const Dog& original);
+		void				makeSound() const;
 		void				addIdea(std::string idea);
 		const std::string&	getIdea(unsigned int idx) const;
 };
