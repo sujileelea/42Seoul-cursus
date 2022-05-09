@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/08 14:23:15 by sujilee           #+#    #+#             */
+/*   Updated: 2022/05/08 14:32:15 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "WrongCat.hpp"
 
 WrongCat::WrongCat()
@@ -24,8 +36,5 @@ WrongCat&	WrongCat::operator=(const WrongCat& original)
 
 void	WrongCat::makeSound() const
 {
-	if (_type == "")
-		std::cout << "? : ???" << std::endl;
-	else
-		std::cout << _type << " : Meow..." << std::endl;
+	std::cout << _type << " : (WRONG CAT)" << std::endl;
 }

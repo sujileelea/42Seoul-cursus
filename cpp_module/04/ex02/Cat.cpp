@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/08 14:25:45 by sujilee           #+#    #+#             */
+/*   Updated: 2022/05/08 14:34:09 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Cat.hpp"
 
 Cat::Cat()
@@ -24,5 +36,5 @@ Cat&	Cat::operator=(const Cat& original)
 
 void	Cat::makeSound() const
 {
-	std::cout << _type << " : Meow..." << std::endl;
+	std::cout << _type << " :meow~~~~" << std::endl;
 }

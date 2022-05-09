@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/08 14:23:08 by sujilee           #+#    #+#             */
+/*   Updated: 2022/05/08 14:29:52 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal() : _type("")
@@ -34,7 +46,7 @@ void	WrongAnimal::setType(std::string type)
 void	WrongAnimal::makeSound() const
 {
 	if (_type == "")
-		std::cout << "? : ???" << std::endl;
+		std::cout << "maybe this is the wrong animal..." << std::endl;
 	else
-		std::cout << _type << " : Crrrrr!!!" << std::endl;
+		std::cout << _type << "IT's WRONG ANIMAL !" << std::endl;
 }

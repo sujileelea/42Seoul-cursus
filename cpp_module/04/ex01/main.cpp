@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/08 14:25:11 by sujilee           #+#    #+#             */
+/*   Updated: 2022/05/08 14:33:46 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Dog.hpp"
 #include "Cat.hpp"
 
@@ -9,8 +21,8 @@ int	main(void)
 	Dog *dog = (Dog*)j;
 	Cat *cat = (Cat*)i;
 
-	dog->addIdea("Meong-meong!!!");
-	cat->addIdea("Nya-ong...");
+	dog->addIdea("I AM A DOG");
+	cat->addIdea("I AM A CAT");
 	std::cout << std::endl;
 
 	Animal* animals[6];

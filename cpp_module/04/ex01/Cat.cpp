@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/08 14:24:55 by sujilee           #+#    #+#             */
+/*   Updated: 2022/05/08 14:33:18 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Cat.hpp"
 
 Cat::Cat() : Animal()
@@ -27,7 +39,7 @@ Cat&	Cat::operator=(const Cat& original)
 
 void	Cat::makeSound() const
 {
-	std::cout << _type << " : Meow..." << std::endl;
+	std::cout << _type << " : meow~~~~" << std::endl;
 }
 
 void	Cat::addIdea(std::string idea)

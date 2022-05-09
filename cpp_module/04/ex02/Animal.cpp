@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/08 14:25:33 by sujilee           #+#    #+#             */
+/*   Updated: 2022/05/08 14:34:01 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 
 Animal::Animal() : _type("")
@@ -34,7 +46,7 @@ void	Animal::setType(std::string type)
 void	Animal::makeSound() const
 {
 	if (_type == "")
-		std::cout << "? : ???" << std::endl;
+		std::cout << "?" << std::endl;
 	else
-		std::cout << _type << " : Crrrrr!!!" << std::endl;
+		std::cout << _type << " every animal has it's sound..." << std::endl;
 }
