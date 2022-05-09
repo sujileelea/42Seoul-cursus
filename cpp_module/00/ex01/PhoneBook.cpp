@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:16:49 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/04 21:09:47 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/09 15:23:46 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	PhoneBook::SearchIndex() {
 }
 
 std::string PhoneBook::ShortenString(std::string str) {
-	if (str.length() >= 10)
+	if (str.length() > 10)
 		return str.substr(0, 9) + ".";
 	else
 		return str;
