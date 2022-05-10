@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:11:55 by sujilee           #+#    #+#             */
-/*   Updated: 2022/04/19 16:59:44 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/10 11:46:50 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 void	replaceString(std::string &line, std::string s1, std::string s2)
 {//line에서 s1을 s2로 바꿔준다.
 	int	idx;
-
+	std::cout << "original line : " << line << std::endl;
 	while ((idx = line.find(s1)) != std::string::npos) // line에서 s1문자열을 찾아서 인덱스를 반환한다.
 	{
 		line.erase(idx, s1.length()); // 해당 인덱스부터 s1길이만큼 지워준다.
 		line.insert(idx, s2); // 해당 인덱스부터 s2를 삽입한다.
 	}
-	line += "\n";
+	// line += "\n";
 }
 
 int	main(int argc, char** argv)
@@ -43,8 +43,12 @@ int	main(int argc, char** argv)
 				while (std::getline(orgFile, line)) // 입력 스트림을 받아 한줄씩 가져온다.
 				{
 					replaceString(line, argv[2], argv[3]);
+					line += "\n";
 					newFile << line;
 				}
+				std::cout << "last line : " << line << std::endl;
+				std::cout << "-------" << std::endl;
+
 				newFile.close();
 			}
 			else
