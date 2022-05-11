@@ -6,30 +6,22 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:26:19 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/11 09:28:49 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/11 09:30:17 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-int	main() {
-    try
-    {
-        Bureaucrat sujilee("sujilee", 1);
+int	main(void) {
+    try {
+        Bureaucrat sujilee("sujilee", 50);
+        Form form("form", 49, 30);
+
         std::cout << sujilee;
-
-
-        // Bureaucrat kchoi("kchoi", 0);
-        // std::cout << kchoi;
-
-
-        // sujilee.upGrade(44);
-        // std::cout << sujilee;
-        sujilee.downGrade(107);
-        std::cout << sujilee;
+        std::cout << form;
+        sujilee.signForm(form);
     }
-    catch(const std::exception& e)
-    {
+    catch(const std::exception& e) {
         std::cerr << e.what() << std::endl;
     }
 
