@@ -6,37 +6,29 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:26:19 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/11 10:34:42 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/11 11:15:32 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
-int	main(void) {
-    Bureaucrat eelijus("sujilee", 5);
-    std::cout << eelijus;
+int	main(void)
+{
+	Bureaucrat	eelijus("sujilee", 1);
+	Intern		someRandomIntern;
 
-    ShrubberyCreationForm s("rose");
-    eelijus.signForm(s);
-    eelijus.executeForm(s);
+	Form* rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	eelijus.signForm(*rrf);
+	eelijus.executeForm(*rrf);
+	Form* scf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+	eelijus.signForm(*scf);
+	eelijus.executeForm(*scf);
+	Form* ppf = someRandomIntern.makeForm("presidential pardon", "Bender");
+	eelijus.signForm(*ppf);
+	eelijus.executeForm(*ppf);
 
-    RobotomyRequestForm r("drill");
-    eelijus.signForm(r);
-    eelijus.executeForm(r);
-
-    PresidentialPardonForm p("pardon");
-    eelijus.signForm(p);
-    eelijus.executeForm(p);
-
-    eelijus.downGrade(140);
-    eelijus.signForm(s);
-    eelijus.executeForm(s);
-    eelijus.signForm(r);
-    eelijus.executeForm(r);
-    eelijus.signForm(p);
-    eelijus.executeForm(p);
-
-    return 0;
+	delete rrf;
+	delete scf;
+	delete ppf;
+	return 0;
 }

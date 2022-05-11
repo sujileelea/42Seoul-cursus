@@ -6,11 +6,11 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 16:09:09 by sujilee           #+#    #+#             */
-/*   Updated: 2022/03/30 17:49:07 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/11 12:22:46 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMEBIE_H
+#ifndef ZOMBIE_H
 # define ZOMBIE_H
 
 #include <iostream>

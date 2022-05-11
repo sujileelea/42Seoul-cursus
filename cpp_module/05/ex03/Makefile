@@ -6,17 +6,17 @@
 #    By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 16:23:20 by sujilee           #+#    #+#              #
-#    Updated: 2022/05/11 10:31:23 by sujilee          ###   ########.fr        #
+#    Updated: 2022/05/11 11:16:00 by sujilee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME := Form
+NAME := Intern
 CFLAGS := -Wall -Wextra -Werror -std=c++98
 CC := c++
 RM := rm -rf
 
-SRC :=  main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRC :=  main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 OBJ := $(SRC:.cpp=.o)
 
 all : $(NAME)
