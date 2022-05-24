@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:47:37 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/06 17:51:05 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/20 16:25:01 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoint(10), _energyPoint(
 	std::cout << "ClapTrap  <" << _name << "> contructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& ref) {
-	std::cout << "ClapTrap <" << ref._name << "> copy contstructor called" << std::endl;
-	*this = ref;
+ClapTrap::ClapTrap(const ClapTrap& original) {
+	std::cout << "ClapTrap <" << original._name << "> copy contstructor called" << std::endl;
+	*this = original;
 }
 
 ClapTrap::~ClapTrap() {
 	std::cout << "ClapTrap <" << _name << "> desctructor called" << std::endl;
 }
 
-ClapTrap& ClapTrap::operator=(const ClapTrap& ref) {
-	std::cout << "ClapTrap <" << ref._name << "> assignation operator called" << std::endl;
-	_name = ref._name;
-	_hitPoint = ref._hitPoint;
-	_energyPoint = ref._energyPoint;
-	_attackDamage = ref._attackDamage;
+ClapTrap& ClapTrap::operator=(const ClapTrap& original) {
+	std::cout << "ClapTrap <" << original._name << "> assignation operator called" << std::endl;
+	_name = original._name;
+	_hitPoint = original._hitPoint;
+	_energyPoint = original._energyPoint;
+	_attackDamage = original._attackDamage;
 	return *this;
 }
 

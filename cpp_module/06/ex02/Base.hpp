@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 17:57:27 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/20 16:26:00 by sujilee          ###   ########.fr       */
+/*   Created: 2022/05/14 12:13:13 by sujilee           #+#    #+#             */
+/*   Updated: 2022/05/14 12:19:13 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef BASE_H
+#define BASE_H
 
-#include "ClapTrap.hpp"
+#include <iostream>
 
-class ScavTrap : public ClapTrap {
-	
-	public :
-			ScavTrap();
-			ScavTrap(std::string name);
-			ScavTrap(const ScavTrap& original);
-			~ScavTrap();
-			ScavTrap& operator=(const ScavTrap& original);
-
-			void attack(std::string const& target);
-			void guardGate();
-
+class Base {
+	public:
+		virtual ~Base();
 };
 
+Base*	generate();
+void	identify(Base* p);
+void	identify(Base& p);
 
 #endif

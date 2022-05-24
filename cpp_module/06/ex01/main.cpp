@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 17:57:27 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/20 16:26:00 by sujilee          ###   ########.fr       */
+/*   Created: 2022/05/14 12:10:46 by sujilee           #+#    #+#             */
+/*   Updated: 2022/05/14 12:10:51 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "Data.hpp"
 
-#include "ClapTrap.hpp"
+int main(void)
+{
+    Data data = {"test"};
 
-class ScavTrap : public ClapTrap {
-	
-	public :
-			ScavTrap();
-			ScavTrap(std::string name);
-			ScavTrap(const ScavTrap& original);
-			~ScavTrap();
-			ScavTrap& operator=(const ScavTrap& original);
+    std::cout << "data addr : " << &data<< std::endl;
 
-			void attack(std::string const& target);
-			void guardGate();
+    uintptr_t addr = serialize(&data);
+    std::cout << "serialize addr : " << addr << std::endl;
 
-};
+    Data* temp = deserialize(addr);
+    std::cout << "deserialize addr : " << temp << std::endl;
 
-
-#endif
+    return 0;
+}

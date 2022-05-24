@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 10:45:49 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/03 10:45:54 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/14 13:13:00 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	main(void)
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
 	std::cout << "d is " << d << std::endl;
+
+
+	std::cout << "a.getRawBits: " << a.getRawBits() << std::endl;
+	std::cout << "b.getRawBits: " << b.getRawBits() << std::endl;
+	std::cout << "c.getRawBits: " << c.getRawBits() << std::endl;
 
 	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;

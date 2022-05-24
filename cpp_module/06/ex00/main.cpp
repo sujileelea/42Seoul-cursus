@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 17:57:27 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/20 16:26:00 by sujilee          ###   ########.fr       */
+/*   Created: 2022/05/14 11:55:48 by sujilee           #+#    #+#             */
+/*   Updated: 2022/05/14 11:56:22 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "ScalarConversion.hpp"
 
-#include "ClapTrap.hpp"
+int	main(int argc, char **argv)
+{
+	if (argc != 2)
+		std::cout << "Invalid arguments!" << std::endl;
+	else
+	{
+		ScalarConversion	sc(argv[1]);
 
-class ScavTrap : public ClapTrap {
-	
-	public :
-			ScavTrap();
-			ScavTrap(std::string name);
-			ScavTrap(const ScavTrap& original);
-			~ScavTrap();
-			ScavTrap& operator=(const ScavTrap& original);
-
-			void attack(std::string const& target);
-			void guardGate();
-
-};
-
-
-#endif
+		sc.convertChar();
+		sc.convertInt();
+		sc.convertFloat();
+		sc.convertDouble();
+	}
+	return 0;
+}

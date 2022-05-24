@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:20:16 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/06 18:59:53 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/20 16:25:54 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	std::cout << "ScavTrap " << name << " constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& ref) : ClapTrap(ref) {
+ScavTrap::ScavTrap(const ScavTrap& original) : ClapTrap(original) {
 	//자식 클래스는 부모 클래스를 상속 받고 있기 때문에 참조가 가능하다
 	std::cout << "ScavTrap " << getName() << " copy constructor called" << std::endl;
-	*this = ref;
+	*this = original;
 }
 
 ScavTrap::~ScavTrap() {
 	std::cout << "ScavTrap destructor called" << std::endl;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& ref) {
+ScavTrap& ScavTrap::operator=(const ScavTrap& original) {
 	std::cout << "ScavTrap " << getName() << "assignation operator called" << std::endl;
 	return *this;
 }

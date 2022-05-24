@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:32:03 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/06 17:21:30 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/05/20 16:25:42 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ class ClapTrap {
 			unsigned int	_energyPoint;	//EP
 			unsigned int	_attackDamage;	//AD
 	public:
-			ClapTrap();	//디폴트 생성자?
-			ClapTrap(std::string name); //기본 생성자?
-			ClapTrap(const ClapTrap& ref);  //복사 생성자
-			ClapTrap&	operator=(const ClapTrap& ref); //대입 연산자
-			~ClapTrap(); //소멸자
+			ClapTrap();
+			ClapTrap(std::string name); 
+			ClapTrap(const ClapTrap& original);  
+			ClapTrap&	operator=(const ClapTrap& original); 
+			~ClapTrap(); 
 
 
 			void	setName(std::string name);

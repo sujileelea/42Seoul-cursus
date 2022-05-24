@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Data.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 17:57:27 by sujilee           #+#    #+#             */
-/*   Updated: 2022/05/20 16:26:00 by sujilee          ###   ########.fr       */
+/*   Created: 2022/05/14 12:10:20 by sujilee           #+#    #+#             */
+/*   Updated: 2022/05/14 12:10:56 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "Data.hpp"
 
-#include "ClapTrap.hpp"
+uintptr_t serialize(Data* ptr) {
+    return reinterpret_cast<uintptr_t>(ptr);
+}
 
-class ScavTrap : public ClapTrap {
-	
-	public :
-			ScavTrap();
-			ScavTrap(std::string name);
-			ScavTrap(const ScavTrap& original);
-			~ScavTrap();
-			ScavTrap& operator=(const ScavTrap& original);
-
-			void attack(std::string const& target);
-			void guardGate();
-
-};
-
-
-#endif
+Data* deserialize(uintptr_t raw) {
+    return reinterpret_cast<Data*>(raw);
+}
