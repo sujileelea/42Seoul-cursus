@@ -1,0 +1,7 @@
+this is a test file.
+THIS should be changed to THAT.
+this This tHis thas this tis
+this
+thisthis
+thisthisthis
+thisthisthisthis
