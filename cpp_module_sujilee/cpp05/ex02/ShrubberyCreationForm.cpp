@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/01 15:14:14 by sujilee           #+#    #+#             */
+/*   Updated: 2022/06/01 16:58:30 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
 
 std::string ShrubberyCreationForm::getTarget() const {
@@ -17,8 +29,10 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	if (newfile.is_open()) {
 		newfile << drawing;
 		newfile.close();
+		std::cout << "Shrubbery Form executed successfully" << std::endl;
+		return ;
 	}
-	std::cout << "Shrubbery Form executed successfully" << std::endl;
+	std::cout << "nothing happened" << std::endl;
 
 }
 

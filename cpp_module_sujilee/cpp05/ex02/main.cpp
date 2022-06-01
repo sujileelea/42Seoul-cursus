@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/01 15:13:52 by sujilee           #+#    #+#             */
+/*   Updated: 2022/06/01 16:16:07 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -7,17 +19,17 @@
 int	main(void)
 {
 	Form	*form = NULL;
-	Bureaucrat	bob("bob", 1);
-	Bureaucrat	phil("phil", 40);
-	Bureaucrat	luc("luc", 150);
+	Bureaucrat	sujilee("sujilee", 1);
+	Bureaucrat	DDUDDU("DDUDDU", 40);
+	Bureaucrat	kchoi("kchoi", 150);
 
 	std::cout << "=======================================" << std::endl;
 	std::cout << "     PresidentialPardonForm Test" << std::endl;
 	try
 	{
-		form = new PresidentialPardonForm("28A");
-		std::cout << "--bob shouldn't success. There's no sign.--" << std::endl;
-		form->execute(bob);
+		form = new PresidentialPardonForm("President");
+		std::cout << "--sujilee shouldn't success. There's no sign.--" << std::endl;
+		form->execute(sujilee);
 	}
 	catch (std::exception &e)
 	{
@@ -30,12 +42,12 @@ int	main(void)
 
 	try
 	{
-		form = new PresidentialPardonForm("28A");
-		std::cout << "--bob should success.--" << std::endl;
-		bob.signForm(*form);
-		form->execute(bob);
-		std::cout << "--phil and luc shouldn't success.--" << std::endl;
-		phil.signForm(*form);
+		form = new PresidentialPardonForm("President");
+		std::cout << "--sujilee should success.--" << std::endl;
+		sujilee.signForm(*form);
+		form->execute(sujilee);
+		std::cout << "--DDUDDU and kchoi shouldn't success.--" << std::endl;
+		DDUDDU.signForm(*form);
 	}
 	catch (std::exception &e)
 	{
@@ -53,17 +65,17 @@ int	main(void)
 	try
 	{
 		srand((unsigned int)time(NULL));
-		form = new RobotomyRequestForm("28B");
-		bob.signForm(*form);
-		form->execute(phil);
-		form->execute(phil);
-		form->execute(phil);
-		form->execute(phil);
-		form->execute(phil);
-		form->execute(phil);
-		form->execute(phil);
-		form->execute(phil);
-		form->execute(phil);
+		form = new RobotomyRequestForm("Robot");
+		sujilee.signForm(*form);
+		form->execute(DDUDDU);
+		form->execute(DDUDDU);
+		form->execute(DDUDDU);
+		form->execute(DDUDDU);
+		form->execute(DDUDDU);
+		form->execute(DDUDDU);
+		form->execute(DDUDDU);
+		form->execute(DDUDDU);
+		form->execute(DDUDDU);
 	}
 	catch (std::exception &e)
 	{
@@ -81,10 +93,10 @@ int	main(void)
 	std::cout << "    ShrubberyCreationForm Test" << std::endl;
 	try
 	{
-		form = new ShrubberyCreationForm("28C");
-		bob.signForm(*form);
-		form->execute(phil);
-		form->execute(luc);
+		form = new ShrubberyCreationForm("Berry");
+		sujilee.signForm(*form);
+		form->execute(DDUDDU);
+		form->execute(kchoi);
 	}
 	catch (std::exception &e)
 	{

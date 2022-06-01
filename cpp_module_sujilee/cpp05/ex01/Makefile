@@ -1,18 +1,34 @@
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/28 16:23:20 by sujilee           #+#    #+#              #
+#    Updated: 2022/06/01 15:48:20 by sujilee          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CPP = c++
-FLAG = -Werror -Wall -Wextra -std=c++98
+NAME := Form
+CFLAGS := -Wall -Wextra -Werror -std=c++98
+CC := c++
+RM := rm -rf
 
-NAME = Form
+SRC := main.cpp Bureaucrat.cpp Form.cpp
+OBJ := $(SRC:.cpp=.o)
 
-$(NAME): $(SRCS)
-	$(CPP) $(FLAG) -o $(NAME) $(SRCS)
+all : $(NAME)
 
-all: $(NAME)
+$(NAME) : $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
-clean:
-	rm -f $(NAME)
+clean :
+	$(RM) $(OBJ)
 
-re: clean all
+fclean : clean
+	$(RM) $(NAME)
 
-.PHONY: all clean re
+re : fclean all
+
+.PHONY : all clean fclean re

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/01 15:14:58 by sujilee           #+#    #+#             */
+/*   Updated: 2022/06/01 16:31:22 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
 
 std::string ShrubberyCreationForm::getTarget() const {
@@ -10,16 +22,7 @@ void ShrubberyCreationForm::setTarget(std::string& target) {
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	std::ofstream newfile;
-	std::string drawing = "               ,@@@@@@@,\n"
-							"       ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
-							"    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n"
-							"   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n"
-							"   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n"
-							"   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n"
-							"   `&%\\ ` /%&'    |.|        \\ '|8'\n"
-							"       |o|        | |         | |\n"
-							"       |.|        | |         | |\n"
-							"    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_";
+	std::string drawing = "@->--";
 
 	this->isExecutable(executor);
 	newfile.open(_target + "_shrubbery");

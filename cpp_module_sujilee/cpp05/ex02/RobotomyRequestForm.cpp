@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/01 15:14:08 by sujilee           #+#    #+#             */
+/*   Updated: 2022/06/01 16:16:13 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RobotomyRequestForm.hpp"
 
 const std::string& RobotomyRequestForm::getTarget() const {
@@ -11,11 +23,14 @@ void RobotomyRequestForm::setTarget(std::string& target) {
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
 	this->isExecutable(executor);
 	std::cout << "* unbearable drilling noises *" << std::endl;
-	if (rand() % 2)
-		std::cout << _target << " has been robotomized successfully" << std::endl;
-	else 
-		std::cout << _target << " is not completed" << std::endl;
+	int rand = std::rand();
+	if (rand % 2) {
+		std::cout << getTarget() << " has been robotomized successfully" << std::endl;
+	} else {
+		std::cout << "failed to robotomize " << getTarget() << std::endl;
+	}
 }
+
 
 RobotomyRequestForm::RobotomyRequestForm(): Form("Robotomy", 72, 45), _target("") {
 	std::cout << "RobotomyRequestForm default constructor called" << std::endl;

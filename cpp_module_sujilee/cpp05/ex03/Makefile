@@ -1,22 +1,35 @@
-SRCS = main.cpp Bureaucrat.cpp Form.cpp\
-	ShrubberyCreationForm.cpp\
-	RobotomyRequestForm.cpp\
-	PresidentialPardonForm.cpp\
-	Intern.cpp
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/28 16:23:20 by sujilee           #+#    #+#              #
+#    Updated: 2022/06/01 16:33:32 by sujilee          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CPP = c++
-FLAG = -Werror -Wall -Wextra -std=c++98
 
-NAME = Intern
+NAME := INTERN
+CFLAGS := -Wall -Wextra -Werror -std=c++98
+CC := c++
+RM := rm -rf
 
-$(NAME): $(SRCS)
-	$(CPP) $(FLAG) -o $(NAME) $(SRCS)
+SRC := main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
+OBJ := $(SRC:.cpp=.o)
 
-all: $(NAME)
+all : $(NAME)
 
-clean:
-	rm -f $(NAME) $(wildcard *_shrubbery)
+$(NAME) : $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
-re: clean all
+clean :
+	$(RM) $(OBJ) $(wildcard *_shrubbery)
 
-.PHONY: all clean re
+fclean : clean
+	$(RM) $(NAME)
+
+re : fclean all
+
+.PHONY : all clean fclean re

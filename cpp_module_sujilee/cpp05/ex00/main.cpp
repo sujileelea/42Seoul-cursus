@@ -1,4 +1,14 @@
-// Copyright @bigpel66
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: susujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/01 15:10:57 by sujilee           #+#    #+#             */
+/*   Updated: 2022/06/01 15:36:57 by sujilee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
@@ -21,30 +31,30 @@ void b_make(const std::string& name, const int& grade) {
 }
 
 int main(void) {
-	Bureaucrat j("j", 1);
-	Bureaucrat h("h", 150);
+	Bureaucrat sujilee("sujilee", 1);
+	Bureaucrat kchoi("kchoi", 150);
 
-	std::cout << j << h << std::endl;
+	std::cout << sujilee << kchoi << std::endl;
 
-	std::cout << j.getName() << " - increment from " << j.getGrade() << std::endl;
-	b_call(j, &Bureaucrat::incrementGrade);
-	std::cout << h.getName() << " - decrement from " << h.getGrade() << std::endl;
-	b_call(h, &Bureaucrat::decrementGrade);
+	std::cout << sujilee.getName() << " - increment from " << sujilee.getGrade() << std::endl;
+	b_call(sujilee, &Bureaucrat::incrementGrade);
+	std::cout << kchoi.getName() << " - decrement from " << kchoi.getGrade() << std::endl;
+	b_call(kchoi, &Bureaucrat::decrementGrade);
 	std::cout << std::endl;
 
-	std::cout << j.getName() << " - decrement from " << j.getGrade() << std::endl;
-	b_call(j, &Bureaucrat::decrementGrade);
-	std::cout << j.getName() << " - decrement from " << j.getGrade() << std::endl;
-	b_call(j, &Bureaucrat::decrementGrade);
+	std::cout << sujilee.getName() << " - decrement from " << sujilee.getGrade() << std::endl;
+	b_call(sujilee, &Bureaucrat::decrementGrade);
+	std::cout << sujilee.getName() << " - decrement from " << sujilee.getGrade() << std::endl;
+	b_call(sujilee, &Bureaucrat::decrementGrade);
 	std::cout << std::endl;
-	std::cout << h.getName() << " - increment from " << h.getGrade() << std::endl;
-	b_call(h, &Bureaucrat::incrementGrade);
-	std::cout << h.getName() << " - increment from " << h.getGrade() << std::endl;
-	b_call(h, &Bureaucrat::incrementGrade);
+	std::cout << kchoi.getName() << " - increment from " << kchoi.getGrade() << std::endl;
+	b_call(kchoi, &Bureaucrat::incrementGrade);
+	std::cout << kchoi.getName() << " - increment from " << kchoi.getGrade() << std::endl;
+	b_call(kchoi, &Bureaucrat::incrementGrade);
 
-	std::cout << "constructor with 0, 151" << std::endl;
-	b_make("make_1", 0);
-	b_make("make_2", 151);
+	std::cout << "constructor with 0, 151 and error" << std::endl;
+	b_make("too high", 0);
+	b_make("too low", 151);
 	std::cout << std::endl;
 	return 0;
 }
