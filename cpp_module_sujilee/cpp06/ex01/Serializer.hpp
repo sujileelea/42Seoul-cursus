@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 17:42:42 by sujilee           #+#    #+#             */
-/*   Updated: 2022/06/02 17:32:29 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/06/02 18:55:03 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,15 @@ struct Data
 
 class Serializer
 {
-	// ****************[canonical class form]****************
-public:
-	Serializer();								// default constructor
-	virtual ~Serializer();					// destructor
-	Serializer(const Serializer& other);			// copy constructor
-	Serializer& operator=(const Serializer& other);	// (copy) assignment operator
-	// ******************************************************
-public:
-	uintptr_t serialize(Data* ptr);
-	Data* deserialize(uintptr_t raw);
+
+	public:
+		Serializer();								
+		virtual ~Serializer();					
+		Serializer(const Serializer& other);		
+		Serializer& operator=(const Serializer& other);	
+
+		uintptr_t serialize(Data* ptr);
+		Data* deserialize(uintptr_t raw);
 };
 
 #endif

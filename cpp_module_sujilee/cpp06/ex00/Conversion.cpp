@@ -161,7 +161,7 @@ void Conversion::printDouble() const {
 		std::cout << static_cast<double>(_inFloat) << checkPlusZero(_inFloat) << std::endl;
 		break;
 	case Conversion::doubleType:
-		std::cout << _inDouble << checkPlusZero(_inFloat) << std::endl;
+		std::cout << _inDouble << checkPlusZero(_inDouble) << std::endl;
 		break;
 	}
 }
