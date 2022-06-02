@@ -1,18 +1,34 @@
-SRCS = main.cpp A.cpp B.cpp C.cpp Base.cpp
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/28 16:23:20 by sujilee           #+#    #+#              #
+#    Updated: 2022/06/02 18:46:06 by sujilee          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CPP = c++
-FLAG = -Werror -Wall -Wextra -std=c++98
+NAME := Base
+CFLAGS := -Wall -Wextra -Werror -std=c++98
+CC := c++
+RM := rm -rf
 
-NAME = Base
+SRC := main.cpp A.cpp B.cpp C.cpp Base.cpp
+OBJ := $(SRC:.cpp=.o)
 
-$(NAME): $(SRCS)
-	$(CPP) $(FLAG) -o $(NAME) $(SRCS)
+all : $(NAME)
 
-all: $(NAME)
+$(NAME) : $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
-clean:
-	rm -f $(NAME)
+clean :
+	$(RM) $(OBJ)
 
-re: clean all
+fclean : clean
+	$(RM) $(NAME)
 
-.PHONY: all clean re
+re : fclean all
+
+.PHONY : all clean fclean re%

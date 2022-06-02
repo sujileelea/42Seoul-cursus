@@ -40,8 +40,8 @@ public:
 	void printDouble() const;
 	void printAllType() const;
 	
-	int checkCharImpossible(double n) const;
-	int checkIntImpossible(double n) const;
+	int checkCharPossible(double n) const;
+	int checkIntPossible(double n) const;
 	std::string checkPlusZero(double n) const;
 
 	Conversion();

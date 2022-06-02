@@ -91,15 +91,15 @@ void Conversion::printChar() const {
 		std::cout << "\'" << _inChar << "\'" << std::endl;
 		break;
 	case Conversion::intType:
-		if (checkCharImpossible(_inInt))
+		if (checkCharPossible(_inInt))
 			std::cout << "\'" << static_cast<char>(_inInt) << "\'" << std::endl;
 		break;
 	case Conversion::floatType:
-		if (checkCharImpossible(_inFloat))
+		if (checkCharPossible(_inFloat))
 			std::cout << "\'" << static_cast<char>(_inFloat) << "\'" << std::endl;
 		break;
 	case Conversion::doubleType:
-		if (checkCharImpossible(_inDouble))
+		if (checkCharPossible(_inDouble))
 			std::cout << "\'" << static_cast<char>(_inDouble) << "\'" << std::endl;
 		break;
 	}
@@ -116,13 +116,13 @@ void Conversion::printInt() const {
 		std::cout << _inInt << std::endl;
 		break;
 	case Conversion::floatType:
-		if (checkIntImpossible(_inFloat))
+		if (checkIntPossible(_inFloat))
 			std::cout << static_cast<int>(_inFloat) << std::endl;
 		else
 			std::cout << "impossible" << std::endl;
 		break;
 	case Conversion::doubleType:
-		if (checkIntImpossible(_inDouble))
+		if (checkIntPossible(_inDouble))
 			std::cout << static_cast<int>(_inDouble) << std::endl;
 		else
 			std::cout << "impossible" << std::endl;
@@ -177,8 +177,9 @@ void Conversion::printAllType() const {
 	printDouble();
 }
 
-int Conversion::checkCharImpossible(double n) const {
-	if (n - static_cast<int>(n) != 0 || !checkIntImpossible(n))
+int Conversion::checkCharPossible(double n) const {
+	//아스키코드에 없는 숫자가 들어왔을때
+	if (n - static_cast<int>(n) != 0 || !checkIntPossible(n))
 		std::cout << "impossible" << std::endl;
 	else if (n < 32 || n > 127)
 		std::cout << "Non displayable" << std::endl;
@@ -187,7 +188,8 @@ int Conversion::checkCharImpossible(double n) const {
 	return 0;
 }
 
-int Conversion::checkIntImpossible(double n) const {
+//int가 맞으면 1반환
+int Conversion::checkIntPossible(double n) const {
 	if (n <= std::numeric_limits<int>::max() && n >= std::numeric_limits<int>::min()
 	&& n != std::numeric_limits<double>::infinity() && n != -std::numeric_limits<double>::infinity()
 	&& n != std::numeric_limits<double>::quiet_NaN())
@@ -196,7 +198,8 @@ int Conversion::checkIntImpossible(double n) const {
 }
 
 std::string Conversion::checkPlusZero(double n) const {
-	if (n - static_cast<int>(n) == 0 && checkIntImpossible(n))
+	//정수이고 특수케이스가 아니면 .0을 붙여준다.
+	if (n - static_cast<int>(n) == 0 && checkIntPossible(n))
 		return ".0";
 	return "";
 }
