@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:46:36 by sujilee           #+#    #+#             */
-/*   Updated: 2022/06/08 13:48:47 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/06/08 14:50:34 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,45 +16,51 @@
 #define COUNT 10000
 
 int main(){
-	Span sp = Span(5);
-	Span sp1 = Span(COUNT + 5);
-	Span sp2 = Span(3);
+	Span basicSpan = Span(5);
+	Span iterSpan = Span(COUNT + 5);
+	Span wrongSpan = Span(3);
 
 	std::cout << std::endl << "=======================================" << std::endl;
 	std::cout << "[Basic test]" << std::endl;
 	try {
-		sp.addNumber(5);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
-		sp.addNumber(11);
-		for (unsigned long i = 0; i < sp.getStore().size(); i++) {
-			std::cout << sp.getStore()[i] << " ";
+		basicSpan.addNumber(5);
+		basicSpan.addNumber(3);
+		basicSpan.addNumber(17);
+		basicSpan.addNumber(9);
+		basicSpan.addNumber(11);
+		for (unsigned long i = 0; i < basicSpan.getSpanVector().size(); i++) {
+			std::cout << basicSpan.getSpanVector()[i] << " ";
 		}
 		std::cout << std::endl;
-		std::cout << "shortestspan: " << sp.shortestSpan() << std::endl;
-		std::cout << "longestspan: " << sp.longestSpan() << std::endl;
+		std::cout << "shortestspan: " << basicSpan.shortestSpan() << std::endl;
+		std::cout << "longestspan: " << basicSpan.longestSpan() << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << std::endl << "=======================================" << std::endl;
+
+
+
 	std::cout << "[addByIterator test]" << std::endl;
 	try {
-		sp1.addNumber(1);
-		sp1.addNumber(2);
-		sp1.addNumber(3);
-		std::cout << "before addByIterator sp1 size: " << sp1.getNowSize() << std::endl;
-		std::vector<int> newv;
+		iterSpan.addNumber(1);
+		iterSpan.addNumber(2);
+		iterSpan.addNumber(3);
+		std::cout << "before addByIterator iterSpan's size: " << iterSpan.getCurrentSize() << std::endl;
+
+		std::vector<int> modelVector;
+		
 		srand((unsigned int)time(NULL));
 		for (int i = 0; i < COUNT; i++)
-			newv.push_back(rand() % (COUNT * 100));
-		sp1.addByIterator(newv.begin(), newv.end());
-		std::cout << "newv size: " << newv.size() << std::endl;
-		std::cout << "after addByIterator sp1 size: " << sp1.getNowSize() << std::endl;
-		std::cout << "shortestspan: " << sp1.shortestSpan() << std::endl;
-		std::cout << "longestspan: " << sp1.longestSpan() << std::endl;
+			modelVector.push_back(rand() % (COUNT * 100));
+		
+		iterSpan.addByIterator(modelVector.begin(), modelVector.end());
+		std::cout << "modelVector size: " << modelVector.size() << std::endl;
+		std::cout << "after addByIterator iterSpan size: " << iterSpan.getCurrentSize() << std::endl;
+		std::cout << "shortestspan: " << iterSpan.shortestSpan() << std::endl;
+		std::cout << "longestspan: " << iterSpan.longestSpan() << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
@@ -63,15 +69,16 @@ int main(){
 	std::cout << std::endl << "=======================================" << std::endl;
 	std::cout << "[error test]" << std::endl;
 	try {
-		std::cout << "test addNumber() when sp is full" << std::endl;
-		sp.addNumber(42);
+		std::cout << "test addNumber() when Span is full" << std::endl;
+		std::cout << "current size : " << basicSpan.getCurrentSize() << std::endl;
+		basicSpan.addNumber(42);
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		std::cout << "test shortestSpan() when sp2 is empty" << std::endl;
-		std::cout << "shortestspan: " << sp2.shortestSpan() << std::endl;
+		std::cout << "test shortestSpan() when wrongSpan is empty" << std::endl;
+		std::cout << "shortestspan possible? : " << wrongSpan.shortestSpan() << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;

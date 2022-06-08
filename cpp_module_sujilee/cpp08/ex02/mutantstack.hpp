@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:46:56 by sujilee           #+#    #+#             */
-/*   Updated: 2022/06/08 13:46:57 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/06/08 14:57:29 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ public:
 	reverse_iterator rend() {
 		return this->c.rend();
 	}
-	//const 반복자라는 의미로 c가 붙은거임
 	const_iterator cbegin() {
 		return this->c.cbegin();
 	}

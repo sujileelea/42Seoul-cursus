@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:46:43 by sujilee           #+#    #+#             */
-/*   Updated: 2022/06/08 13:46:44 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/06/08 14:23:56 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 class Span {
 private:
 	unsigned int _maxsize;
-	std::vector<int> _store;
+	std::vector<int> _spanVector;
 public:
 	unsigned int getMaxSize() const;
-	unsigned int getNowSize() const;
-	std::vector<int> getStore() const;
+	unsigned int getCurrentSize() const;
+	std::vector<int> getSpanVector() const;
 
 	void addNumber(int number);
 	void addByIterator(std::vector<int>::iterator begin, std::vector<int>::iterator end);

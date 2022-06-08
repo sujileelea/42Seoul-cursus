@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:46:47 by sujilee           #+#    #+#             */
-/*   Updated: 2022/06/08 13:48:59 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/06/08 14:54:48 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,40 +16,44 @@
 int main()
 {
 	std::cout << std::endl << "===============================================" << std::endl;
-	std::cout << "test basic and stack function==================" << std::endl;
-	MutantStack<int> mstack;
-	mstack.push(5);
-	mstack.push(17);
-	std::cout << "top: " << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << "size: " << mstack.size() << std::endl;
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
+	std::cout << "==========test basic and stack function========" << std::endl;
+	
+	MutantStack<int> mStack;
+	
+	mStack.push(5);
+	mStack.push(17);
+
+	std::cout << "top: " << mStack.top() << std::endl;
+	mStack.pop();
+	std::cout << "current size: " << mStack.size() << std::endl;
+	mStack.push(3);
+	mStack.push(5);
+	mStack.push(737);
 
 	std::cout << std::endl << "===============================================" << std::endl;
-	std::cout << "print mstack using iterator====================" << std::endl;
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
+	std::cout << "==========print mStack using iterator==========" << std::endl;
+	MutantStack<int>::iterator it = mStack.begin();
+	MutantStack<int>::iterator ite = mStack.end();
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
 		*it += 100;
 		++it;
 	}
+	
 	std::cout << std::endl << "===============================================" << std::endl;
-	std::cout << "print mstack using reverse_iterator============" << std::endl;
-	MutantStack<int>::reverse_iterator rit = mstack.rbegin();
-	MutantStack<int>::reverse_iterator rite = mstack.rend();
+	std::cout << "======print mStack using reverse_iterator=======" << std::endl;
+	MutantStack<int>::reverse_iterator rit = mStack.rbegin();
+	MutantStack<int>::reverse_iterator rite = mStack.rend();
 	while (rit != rite)
 	{
 		std::cout << *rit << std::endl;
 		++rit;
 	}
 	std::cout << std::endl << "===============================================" << std::endl;
-	std::cout << "print mstack using const_iterator==============" << std::endl;
-	MutantStack<int>::const_iterator cit = mstack.cbegin();
-	MutantStack<int>::const_iterator cite = mstack.cend();
+	std::cout << "=======print mStack using const_iterator=======" << std::endl;
+	MutantStack<int>::const_iterator cit = mStack.cbegin();
+	MutantStack<int>::const_iterator cite = mStack.cend();
 	while (cit != cite)
 	{
 		std::cout << *cit << std::endl;
@@ -57,12 +61,12 @@ int main()
 		++cit;
 	}
 	std::cout << std::endl << "===============================================" << std::endl;
-	std::cout << "test deep copy=================================" << std::endl;
-	MutantStack<int> s(mstack);
-	std::stack<int> ss(mstack);
-	it = mstack.begin();
-	ite = mstack.end();
-	std::cout << "MutantStack mstack: " << std::endl;
+	std::cout << "================test deep copy=================" << std::endl;
+	MutantStack<int> s(mStack);
+	std::stack<int> ss(mStack);
+	it = mStack.begin();
+	ite = mStack.end();
+	std::cout << "MutantStack mStack: " << std::endl;
 	while (it != ite)
 	{
 		*it -= 100;

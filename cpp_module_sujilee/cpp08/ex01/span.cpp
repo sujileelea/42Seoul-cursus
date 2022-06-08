@@ -6,7 +6,7 @@
 /*   By: sujilee <sujilee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:46:40 by sujilee           #+#    #+#             */
-/*   Updated: 2022/06/08 13:48:33 by sujilee          ###   ########.fr       */
+/*   Updated: 2022/06/08 14:31:13 by sujilee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,35 @@ unsigned int Span::getMaxSize() const {
 	return _maxsize;
 }
 
-unsigned int Span::getNowSize() const {
-	return _store.size();
+unsigned int Span::getCurrentSize() const {
+	return _spanVector.size();
 }
 
-std::vector<int> Span::getStore() const {
-	return _store;
+std::vector<int> Span::getSpanVector() const {
+	return _spanVector;
 }
 
 void Span::addNumber(int number) {
-	if (getNowSize() == getMaxSize())
-		throw std::out_of_range("Storage is full");
-	_store.push_back(number);
+	if (getCurrentSize() == getMaxSize())
+		throw std::out_of_range("spanVector is full");
+	_spanVector.push_back(number);
 }
 
 void Span::addByIterator(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
 	std::vector<int> tmp(begin, end);
 	
-	if (getMaxSize() - getNowSize() < tmp.size()) {
+	if (getMaxSize() - getCurrentSize() < tmp.size()) {
 		throw std::out_of_range("Not enough storage");
 	}
-	copy(tmp.begin(), tmp.end(), std::back_inserter(this->_store));
+	//copy(원본 시작 반복자, 원본 끝 반복자, 복사받는 시작 반복자)
+	copy(tmp.begin(), tmp.end(), std::back_inserter(this->_spanVector));
 }
 
 int Span::shortestSpan() const {
-	std::vector<int> tmp = this->_store;
+	std::vector<int> tmp = this->_spanVector;
 	int ret = -1;
 
-	if (_store.size() <= 1)
+	if (_spanVector.size() <= 1)
 		throw Span::NoSpan();
 	sort(tmp.begin(), tmp.end());
 	ret = *(tmp.begin() + 1) - *tmp.begin();
@@ -55,9 +56,9 @@ int Span::shortestSpan() const {
 }
 
 int Span::longestSpan() const {
-	std::vector<int> tmp = this->_store;
+	std::vector<int> tmp = this->_spanVector;
 	
-	if (_store.size() <= 1)
+	if (_spanVector.size() <= 1)
 		throw Span::NoSpan();
 	sort(tmp.begin(), tmp.end());
 	return *(tmp.end() - 1) - *tmp.begin();
@@ -84,8 +85,8 @@ Span& Span::operator=(const Span& origin) {
 	std::cout << "--[Span assignation operator called]--" << std::endl;
 	if (this != &origin) {
 		this->_maxsize = origin.getMaxSize();
-		this->_store.clear();
-		copy(origin.getStore().begin(), origin.getStore().end(), this->_store.begin());
+		this->_spanVector.clear();
+		copy(origin.getSpanVector().begin(), origin.getSpanVector().end(), this->_spanVector.begin());
 	}
 	return *this;
 }
