@@ -3,18 +3,21 @@
 
 #define MAX_VAL 10
 
-int main(int, char**)
+int main()
 {
 	std::cout << std::endl << "==================int test" << std::endl;
-	//직접 만든 Array 클래스로 생성한 int 배열
+
+	int * a = new int();
+	std::cout << *a << std::endl;
+
+
 	Array<int> numbers(MAX_VAL);
-	//동적할당을 사용해 만든 int 배열. c에서 하듯이
 	int* mirror = new int[MAX_VAL];
 	srand(time(NULL));
 	std::cout << numbers << std::endl;
 	for (int i = 0; i < MAX_VAL; i++)
 	{
-		const int value = rand() % 1000;
+		int value = rand() % 1000;
 		numbers[i] = value;
 		mirror[i] = value;
 	}
@@ -22,14 +25,6 @@ int main(int, char**)
 	for (int i = 0; i < MAX_VAL; i++)
 		std::cout << "mirror[" << i << "]: " << mirror[i] << std::endl;
 	std::cout << std::endl;
-	for (int i = 0; i < MAX_VAL; i++)
-	{
-		if (mirror[i] != numbers[i])
-		{
-			std::cerr << "didn't save the same value!!" << std::endl;
-			return 1;
-		}
-	}
 
 
 	std::cout << std::endl << "==================string test" << std::endl;
@@ -39,9 +34,10 @@ int main(int, char**)
 	std::cout << str << std::endl;
 	for (int i = 0; i < MAX_VAL; i++)
 	{
-		const int value = rand() % 1000;
-		str[i] = std::to_string(value);
-		mirror2[i] = std::to_string(value);
+		std::string value = "";
+		value.append(1, rand() % 10 + '0');
+		str[i] = "number is " + value;
+		mirror2[i] = "number is " + value;
 	}
 	std::cout << str << std::endl;
 	for (int i = 0; i < MAX_VAL; i++)
@@ -79,5 +75,6 @@ int main(int, char**)
 
 	delete[] mirror;
 	delete[] mirror2;
+
 	return 0;
 }

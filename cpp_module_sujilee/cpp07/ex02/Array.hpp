@@ -69,6 +69,7 @@ public:
 		if (this->_arr)
 			delete[] this->_arr;
 		this->_arr = NULL;
+		_size = 0;
 	}
 };
 
@@ -81,3 +82,10 @@ std::ostream& operator<<(std::ostream& out, const Array<T> &ref) {
 }
 //cout 시 << 연산자를 이렇게 쓸거야
 #endif
+
+
+// operator=
+// class.operator=(value)
+// class = value
+// //위치. 연산자 뒤에 와도 실행될 수 있게
+// cout << class << 
