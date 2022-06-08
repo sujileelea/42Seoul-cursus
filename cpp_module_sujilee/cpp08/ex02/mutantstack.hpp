@@ -23,6 +23,7 @@ public:
 	reverse_iterator rend() {
 		return this->c.rend();
 	}
+	//const 반복자라는 의미로 c가 붙은거임
 	const_iterator cbegin() {
 		return this->c.cbegin();
 	}
@@ -37,7 +38,8 @@ public:
 	}
 
 	MutantStack() { }
-	MutantStack(const MutantStack& copy) { *this = copy; }
+	MutantStack(const MutantStack& copy) { 
+		*this = copy; }
 	MutantStack& operator=(const MutantStack& m) {
 		std::stack<T>::operator=(m);
 		return *this;

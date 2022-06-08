@@ -52,7 +52,7 @@ int main(){
 	std::cout << "[error test]" << std::endl;
 	try {
 		std::cout << "test addNumber() when sp is full" << std::endl;
-		sp.addNumber(18);
+		sp.addNumber(42);
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
